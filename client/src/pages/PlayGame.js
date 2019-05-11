@@ -18,11 +18,12 @@ class PlayGame extends Component {
         },
         scene: {
         preload: this.preload,
-        create: this.create
+        create: this.create,
+        update: this.update,
       }
     };
 
-    var game = new Phaser.Game(config);
+  let game = new Phaser.Game(config);
   }
 
   shouldComponentUpdate() {
@@ -31,16 +32,16 @@ class PlayGame extends Component {
 
   preload ()
   {
-    this.load.setBaseURL('http://labs.phaser.io');
     
-    this.load.image('sky', 'assets/skies/space3.png');
-    this.load.image('logo', 'assets/sprites/phaser3-logo.png');
+    this.load.image('stars', '/images/star_sky.jpg');
+    this.load.image('Duck', '/images/muscleDuck.png');
+    this.load.image('Bad', '/images/unicornduck.jpeg');
     this.load.image('red', 'assets/particles/red.png');
   }
 
   create ()
   {
-    this.add.image(400, 300, 'sky');
+    this.add.image(0, 0, 'stars').setOrigin(0,0);
     
     var particles = this.add.particles('red');
     
@@ -49,14 +50,50 @@ class PlayGame extends Component {
       scale: { start: 1, end: 0 },
         blendMode: 'ADD'
       });
+    this.Duck = this.physics.add.sprite(400,0,"Duck")
+    this.Duck.setScale(.1,.1)
+    this.Duck.body.setGravityY(.01)
+    this.Duck.setBounce(1, .6);
+    this.Duck.setCollideWorldBounds(true);
 
-    var logo = this.physics.add.image(400, 100, 'logo');
+
+    this.Bad = this.physics.add.sprite(100,0,"Bad")
+    this.Bad.setScale(.1,.1)
+    this.Bad.body.setGravityY(.01)
+    this.Bad.setBounce(1, 1);
+  
+  
+    // Duck = this.physics.add.image(0,0,'');
+    this.Bad.setVelocity(100, 200);
+    this.Bad.setCollideWorldBounds(true);
+    this.physics.add.collider(this.Bad,this.Duck)
     
-    logo.setVelocity(100, 200);
-    logo.setBounce(1, 1);
-    logo.setCollideWorldBounds(true);
+    emitter.startFollow(this.Duck);
+    console.log(this.Duck);
+    console.log(this.Duck);
+
+  }
+
+  update(){
+    let cursors = this.input.keyboard.createCursorKeys();
+    if (cursors.left.isDown)
+    {
+        this.Duck.setVelocityX(-160);
+    }
+    else if (cursors.right.isDown)
+    {
+        this.Duck.setVelocityX(160);
+    }
+    else
+    {
+        this.Duck.setVelocityX(0);
+    }
     
-    emitter.startFollow(logo);
+    if (cursors.up.isDown)
+    {
+        this.Duck.setVelocityY(-330);
+    }
+
   }
 
   render() {
