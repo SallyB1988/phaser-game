@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Users from "./pages/Users";
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
+import PlayGame from "./pages/PlayGame";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         {/* <Nav /> */}
         <Switch>
           <Route exact path="/" component={Users} />
+          <Route exact path="/playgame" component={PlayGame} />
           <Route exact path="/users" component={Users} />
           <Route exact path="/users/:id" component={Detail} />
           <Route component={NoMatch} />

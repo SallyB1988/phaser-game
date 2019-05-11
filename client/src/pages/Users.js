@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Row, Col, Container, Jumbotron, Button, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Row, Col, Container, Jumbotron, Button } from "react-bootstrap";
 import { Input, FormBtn } from "../components/Form";
 
 class Users extends Component {
@@ -39,10 +38,6 @@ class Users extends Component {
   };
 
   handleFormSubmit = event => {
-    console.log('in handleformsubmit');
-    console.log(this.state.firstName);
-    console.log(this.state.firstName);
-    console.log(this.state.lastName);
     event.preventDefault();
     if (this.state.firstName && this.state.lastName) {
       API.saveUser({
@@ -54,14 +49,23 @@ class Users extends Component {
     }
   };
 
+  handleStartGame = () => {
+    this.props.history.push('./playgame');
+  };
+
   render() {
     return (
       <Container fluid>
         <Row>
-          <Col md={6}>
-            <div>
-              <h1>New Player</h1>
-            </div>
+          <Button onClick={this.handleStartGame}>
+            Start Game
+          </Button>
+        </Row>
+        <Row>
+          <Col size="md-6 mx-auto">
+            <Jumbotron>
+              <h1>Who Are You?</h1>
+            </Jumbotron>
             <form>
               <Input
                 value={this.state.firstName}
@@ -82,27 +86,6 @@ class Users extends Component {
                 Submit
               </FormBtn>
             </form>
-          </Col>
-          <Col md={6}>
-            <div>
-              <h1>Current Players</h1>
-            </div>
-            {this.state.users.length ? (
-              <ListGroup>
-                {this.state.users.map(user => (
-                  <ListGroupItem key={user._id}>
-                    <Link to={"/users/" + user._id}>
-                      <strong>
-                        {user.firstName} {user.lastName}
-                      </strong>
-                    </Link>
-                    <Button variant="secondary" onClick={() => this.deleteUser(user._id)} >X</Button>
-                  </ListGroupItem>
-                ))}
-              </ListGroup>
-            ) : (
-              <h3>No Existing Players</h3>
-            )}
           </Col>
         </Row>
       </Container>
