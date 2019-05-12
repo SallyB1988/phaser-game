@@ -52,14 +52,14 @@ class PlayGame extends Component {
       });
     this.Duck = this.physics.add.sprite(400,0,"Duck")
     this.Duck.setScale(.1,.1)
-    this.Duck.body.setGravityY(.01)
-    this.Duck.setBounce(1, .6);
+    this.Duck.body.setAllowGravity(false)
+    this.Duck.setBounce(1, 1);
     this.Duck.setCollideWorldBounds(true);
 
 
     this.Bad = this.physics.add.sprite(100,0,"Bad")
     this.Bad.setScale(.1,.1)
-    this.Bad.body.setGravityY(.01)
+    this.Bad.body.setGravityY(0)
     this.Bad.setBounce(1, 1);
   
   
@@ -78,21 +78,31 @@ class PlayGame extends Component {
     let cursors = this.input.keyboard.createCursorKeys();
     if (cursors.left.isDown)
     {
-        this.Duck.setVelocityX(-160);
+        this.Duck.setVelocityX(-300);
+
     }
-    else if (cursors.right.isDown)
+     if (cursors.right.isDown)
     {
-        this.Duck.setVelocityX(160);
+        this.Duck.setVelocityX(300);
+
     }
-    else
+     if (cursors.down.isDown)
     {
+        this.Duck.setVelocityY(300);
+        // this.Duck.setVelocityX(0);
+    }
+      if (cursors.up.isDown)
+    {
+        this.Duck.setVelocityY(-300);
+        // this.Duck.setVelocityX(0);
+
+    }
+    else if(cursors.left.isUp && cursors.right.isUp && cursors.up.isUp && cursors.down.isUp){
         this.Duck.setVelocityX(0);
+        this.Duck.setVelocityY(0)
     }
     
-    if (cursors.up.isDown)
-    {
-        this.Duck.setVelocityY(-330);
-    }
+  
 
   }
 
