@@ -1,5 +1,7 @@
-
 import Phaser from "phaser";
+import Player from "../gameobjects/player.js"
+import Enemy from "../gameobjects/enemy.js";
+
 export default class Game extends Phaser.Scene {
     constructor() {
         super({ key: "Game" })
@@ -23,22 +25,12 @@ export default class Game extends Phaser.Scene {
             scale: { start: 1, end: 0 },
             blendMode: 'ADD'
         });
-        this.Duck = this.physics.add.sprite(400, 0, "Duck")
-        this.Duck.setScale(.1, .1)
-        this.Duck.body.setAllowGravity(false)
-        this.Duck.setBounce(1, 1);
-        this.Duck.setCollideWorldBounds(true);
 
+        this.Duck = new Player(this,300,0,"Duck")
+        
+        this.Bad = new Enemy(this,400,400,"Bad")
 
-        this.Bad = this.physics.add.sprite(100, 0, "Bad")
-        this.Bad.setScale(.1, .1)
-        this.Bad.body.setGravityY(0)
-        this.Bad.setBounce(1, 1);
-
-        this.Bad.setVelocity(100, 200);
-        this.Bad.setCollideWorldBounds(true);
         this.physics.add.collider(this.Bad, this.Duck)
-
         emitter.startFollow(this.Duck);
     }
 
