@@ -1,6 +1,8 @@
 import Phaser from "phaser";
 import Player from "../gameobjects/player.js"
 import Enemy from "../gameobjects/enemy.js";
+import KeyboardV2 from "../gameobjects/KeyboardV2.js"
+import KeyControls from "../gameobjects/KeyboadControls.js"
 
 export default class Game extends Phaser.Scene {
     constructor() {
@@ -32,28 +34,13 @@ export default class Game extends Phaser.Scene {
 
         this.physics.add.collider(this.Bad, this.Duck)
         emitter.startFollow(this.Duck);
+
+        new KeyboardV2(this,this.Duck);
+        
     }
 
-    update() {
-        let cursors = this.input.keyboard.createCursorKeys();
-        if (cursors.left.isDown) {
-            this.Duck.setVelocityX(-300);
-        }
-        if (cursors.right.isDown) {
-            this.Duck.setVelocityX(300);
 
-        }
-        if (cursors.down.isDown) {
-            this.Duck.setVelocityY(300);
-        }
-        if (cursors.up.isDown) {
-            this.Duck.setVelocityY(-300);
-        }
-        if (cursors.left.isUp && cursors.right.isUp) {
-            this.Duck.setVelocityX(0);
-        }
-        if (cursors.up.isUp && cursors.down.isUp) {
-            this.Duck.setVelocityY(0)
-        }
+    update() {
+        new KeyControls(this.Duck)
     }
 }

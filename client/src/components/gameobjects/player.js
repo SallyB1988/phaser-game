@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import Game from "../scenes/game.js";
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture) {
@@ -12,7 +13,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.setBounce(1.1)
 
         this.body.setAllowGravity(false)
-        // this.body.setGravityY(1) //if you want gravity set all to true and uncomment
 
     }
 
