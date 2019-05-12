@@ -4,11 +4,16 @@ export default class Game extends Phaser.Scene {
     constructor() {
         super({ key: "Game" })
     }
+    init(){
+        this.scene.remove("Menu")
+    }
 
     preload() {
+        
     }
 
     create() {
+        
         this.add.image(0, 0, 'stars').setOrigin(0, 0);
 
         var particles = this.add.particles('red');
