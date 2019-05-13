@@ -8,6 +8,7 @@ export default class LoadScene extends Phaser.Scene{
     init(){
 
     }
+    
     preload(){
         this.load.image('stars', '/images/star_sky.jpg');
         this.load.image('Duck', '/images/muscleDuck.png');

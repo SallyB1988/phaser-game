@@ -8,8 +8,8 @@ export default class Menu extends Phaser.Scene{
     init(data){
         console.log(data);
         console.log("pretty cool");
-
     }
+    
     preload(){
 
     }
