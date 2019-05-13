@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 
-export default class KeyboardInputs {
+export default class KeyboardControls {
 
     constructor(obj) {
         

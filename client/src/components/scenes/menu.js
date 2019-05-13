@@ -15,13 +15,20 @@ export default class Menu extends Phaser.Scene{
     }
 
     create(){
-        this.startText= this.add.text(400, 300, 'Start');
-        this.startText.setTint(0xff00ff, 0xffff00, 0x0000ff, 0xff0000);
-        this.startText.setInteractive();
-        this.startText.on("pointerdown",()=>{
-            this.scene.add("Game",GameScene,false)
-            this.scene.start("Game");
-        })
-    }
+      this.startText= this.add.text(400, 300, 'Start');
+      this.startText.setTint(0xff00ff, 0xffff00, 0x0000ff, 0xff0000);
+      this.startText.setInteractive();
+      this.startText.on("pointerdown",()=>{
+          this.scene.add("Game",GameScene,false)
+          this.scene.start("Game");
+      })
+      // this.endText= this.add.text(400, 400, 'End');
+      // this.endText.setTint(0xff00ff, 0xffff00, 0x0000ff, 0xff0000);
+      // this.endText.setInteractive();
+      // this.endText.on("pointerdown",()=>{
+      //     this.scene.add("Game",GameScene,false)
+      //     this.scene.start("Game");
+      // })
+}
 
 }

@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import Player from "../gameobjects/player.js"
 import Enemy from "../gameobjects/enemy.js";
 import KeyboardV2 from "../gameobjects/KeyboardV2.js"
-import KeyControls from "../gameobjects/KeyboadControls.js"
+import KeyControls from "../gameobjects/KeyboardControls"
 
 export default class Game extends Phaser.Scene {
     constructor() {
@@ -32,15 +32,19 @@ export default class Game extends Phaser.Scene {
         
         this.Bad = new Enemy(this,400,400,"Bad")
 
-        this.physics.add.collider(this.Bad, this.Duck)
+        this.physics.add.collider(this.Bad, this.Duck, () => {
+          this.Duck.hp--
+          this.Duck.flip = !this.Duck.flip
+          this.Duck.setFlipY(this.Duck.flip)
+          console.log(this.Duck.hp);
+        })
         emitter.startFollow(this.Duck);
-
+        
         new KeyboardV2(this,this.Duck);
         
-    }
-
-
-    update() {
+      }
+      
+      update() {
         new KeyControls(this.Duck)
     }
 }

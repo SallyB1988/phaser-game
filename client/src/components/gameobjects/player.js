@@ -8,13 +8,25 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         scene.sys.displayList.add(this);
         scene.physics.world.enableBody(this);
 
-        this.setScale(.01);
+        this.setScale(.1);
         this.setCollideWorldBounds(true);
         this.setBounce(1.1)
 
-        this.body.setAllowGravity(false)
+        this.hp = 10;
+        this.flip = false
 
-    }
+        
+        this.body.setAllowGravity(false)
+        this.body.immovable=true; // things bounce off
+        
+      }
+      
+    //   update() {
+        
+    //     this.setFlipY(this.flip)
+    // }
+
+
 
 
 }
