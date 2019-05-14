@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import Menu from "./menu.js"
+import KEYS from "../../utils/KEYS"
 export default class LoadScene extends Phaser.Scene{
     constructor () {
         super({ key: "LoadScene"})
@@ -10,9 +10,16 @@ export default class LoadScene extends Phaser.Scene{
     }
     
     preload(){
-        this.load.image('stars', '/images/star_sky.jpg');
-        this.load.image('Duck', '/images/muscleDuck.png');
-        this.load.image('Bad', '/images/unicornduck.jpeg');
+        this.load.image(KEYS.IMAGES.Stars, '/images/star_sky.jpg');
+        this.load.image(KEYS.SPRITES.Duck, '/images/muscleDuck.png');
+        this.load.image(KEYS.SPRITES.Enemy, '/images/unicornduck.jpeg');
+        this.load.image(KEYS.SPRITES.GreenShip, '/images/spikedship3smallgreen.png');
+        this.load.image(KEYS.SPRITES.RedShip,'/images/spikedship3smallred.png')
+        this.load.spritesheet('bullet', '/images/bullets.png',{
+            frameHeight:200,
+            frameWidth:200,
+        });
+      
 
         this.loadbar = this.add.graphics({
             fillStyle:{
@@ -27,7 +34,6 @@ export default class LoadScene extends Phaser.Scene{
     }
 
     create(){
-        this.scene.add("Menu",Menu,false)
         this.scene.start("Menu","Passing Data Around")
     }
 
