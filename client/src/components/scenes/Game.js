@@ -43,15 +43,10 @@ export default class Game extends Phaser.Scene {
 
         this.shootThing.play("shoot")
 
-        // console.log(this.mWorld.walls);
-        
-        this.Ship.on("collision",(pair,bod1,bod2)=>{
-            console.log(bod1);
-        })
-
+      
         this.input.keyboard.on('keyup_P', (e) => {
             this.matter.add.sprite(this.Ship.x, this.Ship.y, "bullet").setSize(50, 50).setDisplaySize(30, 30).setVelocity(1, 1).setCollisionCategory(3)
-                .setCollidesWith([1, 4])
+                .setCollidesWith([1, 4]).play("shoot")
         })
     }
 
