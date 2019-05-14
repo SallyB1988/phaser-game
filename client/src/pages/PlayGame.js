@@ -1,7 +1,7 @@
 import { Component } from "react";
-import LoadScene from "../components/scenes/loading.js"
-import Game from "../components/scenes/game.js";
-import Menu from "../components/scenes/menu.js";
+import LoadScene from "../components/scenes/LoadScene"
+import Game from "../components/scenes/Game";
+import Menu from "../components/scenes/Menu";
 import Phaser from "phaser";
 import { World } from "phaser/src/physics/matter-js/CustomMain";
 
