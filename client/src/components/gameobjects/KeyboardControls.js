@@ -11,11 +11,11 @@ export default class KeyboardControls {
             obj.setAngularVelocity(obj.turnSpeed);
         }
         if (obj.cursors.down.isDown) {
-            obj.thrustRight(.10);
+            obj.thrustRight(obj.speed);
         }
         if (obj.cursors.up.isDown) {
             // obj.setVelocityY(-10);
-            obj.thrustLeft(.10);
+            obj.thrustLeft(obj.speed);
         }
         if (obj.cursors.left.isUp && obj.cursors.right.isUp) {
             obj.setAngularVelocity(0)
