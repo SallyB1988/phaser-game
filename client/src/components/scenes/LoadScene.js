@@ -15,9 +15,9 @@ export default class LoadScene extends Phaser.Scene{
         this.load.image(KEYS.SPRITES.Enemy, '/images/unicornduck.jpeg');
         this.load.image(KEYS.SPRITES.GreenShip, '/images/spikedship3smallgreen.png');
         this.load.image(KEYS.SPRITES.RedShip,'/images/spikedship3smallred.png')
-        this.load.spritesheet('bullet', '/images/bullets.png',{
-            frameHeight:200,
-            frameWidth:200,
+        this.load.spritesheet('bullet', '/images/magicbullets.png',{
+            frameHeight:106,
+            frameWidth:128,
         });
       
 
