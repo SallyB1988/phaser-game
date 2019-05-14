@@ -39,10 +39,6 @@ export default class Game extends Phaser.Scene {
         this.Ship = new Player(this.mWorld, 400, 200, KEYS.SPRITES.GreenShip)
         this.Bad = new Enemy(this.mWorld, 0, 0, KEYS.SPRITES.Enemy);
         new KeyboardV2(this, this.Ship);
-        this.shootThing = this.matter.add.sprite(200, 200, "bullet").setSize(50, 50).setDisplaySize(30, 30);
-
-        this.shootThing.play("shoot")
-
       
         this.input.keyboard.on('keyup_P', (e) => {
             this.matter.add.sprite(this.Ship.x, this.Ship.y, "bullet")
@@ -51,8 +47,8 @@ export default class Game extends Phaser.Scene {
             .setIgnoreGravity(true)
             .setAngle(this.Ship.angle - 90)
             .thrust(.02 + this.Ship.speed)
-            .setCollisionCategory(3)
-            .setCollidesWith([1, 4])
+            .setCollisionCategory(8)
+            .setCollidesWith([1,4])
             .play("shoot");
         })
     }
