@@ -26,7 +26,6 @@ export default class Game extends Phaser.Scene {
     create = () => {
         this.mWorld = this.matter.world.setBounds(0, 0, 800, 600, 32, true, true, true, true);
         this.mWorld.on("collisionstart",(pair,bod1,bod2)=>{
-            console.log(bod1);
             if(bod1.gameObject && bod1.gameObject && bod1.gameObject.name !== "player"){
             bod1.gameObject.destroy();
             bod2.gameObject.destroy();
