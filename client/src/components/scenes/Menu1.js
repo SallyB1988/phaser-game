@@ -1,3 +1,4 @@
+
 import Phaser from "phaser";
 import Game from "./Game";
 export default class Menu extends Phaser.Scene {
