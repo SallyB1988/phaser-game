@@ -45,8 +45,15 @@ export default class Game extends Phaser.Scene {
 
       
         this.input.keyboard.on('keyup_P', (e) => {
-            this.matter.add.sprite(this.Ship.x, this.Ship.y, "bullet").setSize(50, 50).setDisplaySize(30, 30).setVelocity(1, 1).setCollisionCategory(3)
-                .setCollidesWith([1, 4]).play("shoot")
+            this.matter.add.sprite(this.Ship.x, this.Ship.y, "bullet")
+            .setSize(50, 50)
+            .setDisplaySize(30, 30)
+            .setIgnoreGravity(true)
+            .setAngle(this.Ship.angle - 90)
+            .thrust(.02 + this.Ship.speed)
+            .setCollisionCategory(3)
+            .setCollidesWith([1, 4])
+            .play("shoot");
         })
     }
 
