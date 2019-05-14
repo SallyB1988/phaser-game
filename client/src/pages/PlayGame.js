@@ -1,6 +1,9 @@
-import React, { Component } from "react";
-import LoadScene from "../components/scenes/loading.js"
-import Phaser, { Renderer } from "phaser";
+import { Component } from "react";
+import LoadScene from "../components/scenes/LoadScene"
+import Game from "../components/scenes/Game";
+import Menu from "../components/scenes/Menu";
+import Phaser from "phaser";
+import { World } from "phaser/src/physics/matter-js/CustomMain";
 
 class PlayGame extends Component {
 
@@ -10,13 +13,18 @@ class PlayGame extends Component {
       width: 800,
       height: 600,
       physics: {
-        default: 'arcade',
-        arcade: {
-          gravity: { y: 200 }
+        default: 'matter',
+        matter:{
+          debug: true          
         }
+        // default:'arcade',
+        // arcade: {
+        //   debug: true,
+        //   gravity: { y: 200 }
+        // }
       },
       scene: [
-        LoadScene
+        LoadScene,Game,Menu
       ]
 
     };
@@ -33,7 +41,7 @@ class PlayGame extends Component {
   }
 
   create() {
-
+  new World(Game)
   }
 
   update() {}

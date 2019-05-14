@@ -3,24 +3,25 @@ import Phaser from "phaser";
 export default class KeyboardControls {
 
     constructor(obj) {
-        
+
         if (obj.cursors.left.isDown) {
-            obj.setVelocityX(-300);
+            obj.setAngularVelocity(-obj.turnSpeed)
         }
         if (obj.cursors.right.isDown) {
-            obj.setVelocityX(300);
+            obj.setAngularVelocity(obj.turnSpeed);
         }
         if (obj.cursors.down.isDown) {
-            obj.setVelocityY(300);
+            obj.thrustRight(obj.speed);
         }
         if (obj.cursors.up.isDown) {
-            obj.setVelocityY(-300);
+            // obj.setVelocityY(-10);
+            obj.thrustLeft(obj.speed);
         }
         if (obj.cursors.left.isUp && obj.cursors.right.isUp) {
-            obj.setVelocityX(0);
-        }
+            obj.setAngularVelocity(0)
+        }      
         if (obj.cursors.up.isUp && obj.cursors.down.isUp) {
-            obj.setVelocityY(0)
+            // obj.setVelocityY(0)
         }
 
     }
