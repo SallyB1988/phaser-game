@@ -1,6 +1,6 @@
 import Phaser from "phaser";
-import Player from "../gameobjects/player.js"
-import Enemy from "../gameobjects/enemy.js";
+import KEYS from "../../utils/KEYS"
+import { Player, Enemy } from "../gameobjects/Characters/index.js"
 import KeyboardV2 from "../gameobjects/KeyboardV2.js"
 import KeyControls from "../gameobjects/KeyboardControls"
 
@@ -8,43 +8,34 @@ export default class Game extends Phaser.Scene {
     constructor() {
         super({ key: "Game" })
     }
-    init(){
-        this.scene.remove("Menu")
+    init() {
     }
 
     preload() {
-        
+          this.anims.create({
+            key: "shoot",
+            frameRate: 4,
+            repeat: 0,
+            frames: this.anims.generateFrameNumbers("bullet", {
+                frames: [0, 1, 2, 3, 4]
+            })
+        })
+
     }
 
     create() {
-        
-        this.add.image(0, 0, 'stars').setOrigin(0, 0);
+        this.mWorld = this.matter.world.setBounds(0, 0, 800, 600, 32, true, true, true, true);
+        this.add.image(0, 0, KEYS.IMAGES.Stars).setOrigin(0, 0).setScale(.8);
+        this.Ship = new Player(this.mWorld, 400, 200, KEYS.SPRITES.GreenShip)
+        this.Bad = new Enemy(this.mWorld, 0, 0, KEYS.SPRITES.Enemy);
+        new KeyboardV2(this, this.Ship);
+        this.shootThing = this.matter.add.sprite(200, 200, "bullet").setSize(50,50)
+    
+        console.log(this.shootThing);
+        this.shootThing.play("shoot")
+    }
 
-        var particles = this.add.particles('red');
-
-        var emitter = particles.createEmitter({
-            speed: 100,
-            scale: { start: 1, end: 0 },
-            blendMode: 'ADD'
-        });
-
-        this.Duck = new Player(this,300,0,"Duck")
-        
-        this.Bad = new Enemy(this,400,400,"Bad")
-
-        this.physics.add.collider(this.Bad, this.Duck, () => {
-          this.Duck.hp--
-          this.Duck.flip = !this.Duck.flip
-          this.Duck.setFlipY(this.Duck.flip)
-          console.log(this.Duck.hp);
-        })
-        emitter.startFollow(this.Duck);
-        
-        new KeyboardV2(this,this.Duck);
-        
-      }
-      
-      update() {
-        new KeyControls(this.Duck)
+    update() {
+        new KeyControls(this.Ship)
     }
 }
