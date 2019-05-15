@@ -56,7 +56,7 @@ export default class Game extends Phaser.Scene {
 
         new KeyboardV2(this, this.Ship);
 
-        this.input.keyboard.on('keyup_P', (e) => {
+        this.input.keyboard.on('keyup_SPACE', (e) => {
             this.matter.add.sprite(this.Ship.x, this.Ship.y, KEYS.SPRITES.Missle)
                 .setSize(50, 50)
                 .setDisplaySize(30, 30)

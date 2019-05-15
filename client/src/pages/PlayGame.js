@@ -6,6 +6,9 @@ import Phaser from "phaser";
 import { World } from "phaser/src/physics/matter-js/CustomMain";
 
 class PlayGame extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   componentDidMount() {
     var config = {
@@ -34,6 +37,11 @@ class PlayGame extends Component {
 
   shouldComponentUpdate() {
     return false;
+  }
+
+  componentWillUnmount() {
+    let dummy = [50, 30];
+    this.props.updateScores(dummy);
   }
 
   preload() {

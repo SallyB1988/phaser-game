@@ -5,6 +5,9 @@ export default {
   getUsers: function() {
     return axios.get("/api/users");
   },
+  getScores: function() {
+    return axios.get("/api/scores");
+  },
   // Gets the user with the given id
   getUser: function(id) {
     return axios.get("/api/users/" + id);
