@@ -4,7 +4,6 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
     constructor(world, x, y, texture) {
         super(world, x, y, texture);
         world.scene.sys.add.displayList.add(this);
-
         this.name = "player"
         this.setScale(.8);
         this.setCollisionCategory(2);
@@ -12,7 +11,6 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
         this.speed = .01;
         this.hp = 10;
         this.score = 0;
-        // this.flip = false
         this.setIgnoreGravity(true)
       }
 }

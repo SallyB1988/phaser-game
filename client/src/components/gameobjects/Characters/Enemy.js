@@ -10,10 +10,6 @@ export default class Enemy extends Phaser.Physics.Matter.Sprite {
         this.points = 5;
         this.setCollisionCategory(4);
         this.name="enemy";
-
-        // if(this.hp = 0){
-        //   this.destroy();
-        // }
       }
       
 }

@@ -29,7 +29,7 @@ export default class Game extends Phaser.Scene {
         this.mWorld = this.matter.world.setBounds(0, 0, 1600, 1200, 32, true, true, true, true);
         this.mWorld.on("collisionstart", (pair, bod1, bod2) => {
             if (bod1.gameObject && bod1.gameObject && bod1.gameObject.name !== "player") {
-                this.Ship.score+=bod1.gameObject.points
+                this.Ship.score+=bod1.gameObject.points || bod2.gameObject.points
                 bod1.gameObject.destroy();
                 bod2.gameObject.destroy();
                 new Enemy(this.mWorld,Phaser.Math.Between(0,1600),Phaser.Math.Between(0,1200),KEYS.SPRITES.Enemy)
