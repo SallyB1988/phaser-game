@@ -22,8 +22,8 @@ class SpaceGame extends Component {
         }
       },
       scale: {
-        mode: Phaser.Scale.CENTER_BOTH,
-        parent: "display-region",
+        // mode: Phaser.Scale.CENTER_BOTH,
+        // parent: "display-region",
         width: 800,
         height: 600
     },
@@ -36,9 +36,15 @@ class SpaceGame extends Component {
     this.game = new Phaser.Game(config);
   }
 
+  // shouldComponentUpdate() {
+  //   return false;
+  // }
+
   componentWillUnmount() {
-    let dummy = [50, 30];
-    this.props.updateScores(dummy);
+    let score = 50
+    console.log(this.fired);
+    let data = { score: score, fired: this.fired }
+    this.props.updateScores(data);
   }
 
   preload() {
