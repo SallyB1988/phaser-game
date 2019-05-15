@@ -8,6 +8,11 @@ export default class Game extends Phaser.Scene {
     constructor() {
         super({ key: "Game" })
     }
+
+    componentWillUnmount() {
+      console.log("GAME OVER");
+    }
+
     init() {
       this.fired = 0;
     }
@@ -28,21 +33,34 @@ export default class Game extends Phaser.Scene {
         // this.sound.play()
         this.mWorld = this.matter.world.setBounds(0, 0, 1600, 1200, 32, true, true, true, true);
         this.mWorld.on("collisionstart", (pair, bod1, bod2) => {
-          console.log(bod2);
-            if (bod1.gameObject && bod1.gameObject && bod1.gameObject.name !== "player") {
-                bod1.gameObject.destroy();
-                bod2.gameObject.destroy();
-            }
 
-            // handle bullet interaction with wall
-            if (bod1.gameObject===null || bod2.gameObject === null) {
-              if (bod2.gameObject.name ==="bullet") {
-                bod2.gameObject.destroy();
-              } else if (bod2.gameObject.name==="bullet") {
+          // body1 and body2 will either be a player, an enemy or the wall
+          let  body1 = bod1.gameObject ? bod1.gameObject.name : "wall";
+          let  body2 = bod2.gameObject ? bod2.gameObject.name : "wall";
+
+          // something hit a wall. Destroy object if it was a bullet
+          if (body1==="wall" || body2==="wall") {
+            if (body1 === "bullet") {
+              bod1.gameObject.destroy();
+            } else if (body2 === "bullet") {
+              bod2.gameObject.destroy();
+            }
+          } else {
+            // bullet hit an enemy -- increment score and destroy both
+            if ( (body1 === "bullet" && body2 === "enemy" ) 
+                  || (body1 ==="enemy" && body2 === "bullet") ) {
+                this.score++;
                 bod1.gameObject.destroy();
-              } 
-            } 
-            
+                bod2.gameObject.destroy();
+            } else if ( (body1 === "player" && body2 === "enemy")
+                  || (body1 === "enemy" && body2 === "player")) {
+              // player and enemy collided - game over
+              console.log("game over");
+              bod1.gameObject.destroy();
+              bod2.gameObject.destroy();
+              this.componentWillUnmount();
+            }
+          }
         })
 
         this.add.image(0, 0, KEYS.IMAGES.Stars).setScale(4);

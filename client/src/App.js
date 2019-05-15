@@ -36,14 +36,14 @@ class App extends Component {
 
         <h3>Score: {this.state.score}</h3>
         <h3>Bullets Fired: {this.state.fired}</h3>
-        <div id="display-region" focus="true" >   
+        {/* <div id="display-region" focus="true" >    */}
                  <Switch>
             <Route exact path="/" component={Instructions} />
-            <Route exact path="/spacegame" component={SpaceGame} />
+            <Route exact path="/spacegame" render={() => <SpaceGame updateScore={this.handleScores} />} />
             <Route exact path="/scores" component={Scores} />
             <Route component={NoMatch} />
           </Switch>
-          </div>
+          {/* </div> */}
         </Container>
       </Router>
     );
