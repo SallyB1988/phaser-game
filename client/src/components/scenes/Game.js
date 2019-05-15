@@ -32,7 +32,6 @@ export default class Game extends Phaser.Scene {
                 bod1.gameObject.destroy();
                 bod2.gameObject.destroy();
                 new Enemy(this.mWorld,Phaser.Math.Between(0,1600),Phaser.Math.Between(0,1200),KEYS.SPRITES.Enemy)
-                console.log(this.Ship.score);                
             }
         })
         //Background
