@@ -11,6 +11,7 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
         this.turnSpeed =.1;
         this.speed = .01;
         this.hp = 10;
+        this.score = 0;
         // this.flip = false
         this.setIgnoreGravity(true)
       }
