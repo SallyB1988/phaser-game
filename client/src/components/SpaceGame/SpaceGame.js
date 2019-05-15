@@ -2,6 +2,8 @@ import { Component } from "react";
 import LoadScene from "../scenes/LoadScene"
 import Game from "../scenes/Game";
 import Menu from "../scenes/Menu";
+import Pause from "../scenes/Pause";
+import Hud from "../scenes/Hud";
 import Phaser from "phaser";
 import { World } from "phaser/src/physics/matter-js/CustomMain";
 
@@ -26,16 +28,12 @@ class SpaceGame extends Component {
         height: 600
     },
       scene: [
-        LoadScene,Game,Menu
+        LoadScene,Game,Menu,Pause,Hud
       ]
 
     };
 
     this.game = new Phaser.Game(config);
-  }
-
-  shouldComponentUpdate() {
-    return false;
   }
 
   componentWillUnmount() {

@@ -1,14 +1,11 @@
 
 import Phaser from "phaser";
-import Game from "./Game";
 export default class Menu extends Phaser.Scene {
     constructor() {
         super({ key: "Menu" })
     }
 
-    init(data) {
-        console.log(data);
-        console.log("pretty cool");
+    init() {
     }
 
     preload() {
@@ -17,20 +14,14 @@ export default class Menu extends Phaser.Scene {
 
     create() {
         
-        this.startText = this.add.text(400, 300, 'Start');
+        this.startText = this.add.text(-10+this.game.renderer.width/2, this.game.renderer.height/2, 'Start');
+        this.startText.setScale(2);
         this.startText.setTint(0xff00ff, 0xffff00, 0x0000ff, 0xff0000);
         this.startText.setInteractive();
-        this.startText.on("pointerdown", () => {
-            this.scene.start("Game");
-        })
 
-        // this.endText= this.add.text(400, 400, 'End');
-        // this.endText.setTint(0xff00ff, 0xffff00, 0x0000ff, 0xff0000);
-        // this.endText.setInteractive();
-        // this.endText.on("pointerdown",()=>{
-        //     this.scene.add("Game",Game,false)
-        //     this.scene.start("Game");
-        // })
+        this.startText.on("pointerdown", () => {
+            this.scene.start("Game","open");
+        })
     }
 
 }

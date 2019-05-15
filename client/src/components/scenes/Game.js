@@ -24,38 +24,42 @@ export default class Game extends Phaser.Scene {
     }
 
     create = () => {
-        // this.sound.play()
+        //matter world
         this.mWorld = this.matter.world.setBounds(0, 0, 1600, 1200, 32, true, true, true, true);
         this.mWorld.on("collisionstart", (pair, bod1, bod2) => {
             if (bod1.gameObject && bod1.gameObject && bod1.gameObject.name !== "player") {
+                this.Ship.score+=bod1.gameObject.points || bod2.gameObject.points
                 bod1.gameObject.destroy();
                 bod2.gameObject.destroy();
+                new Enemy(this.mWorld,Phaser.Math.Between(0,1600),Phaser.Math.Between(0,1200),KEYS.SPRITES.Enemy)
             }
         })
-
+        //Background
         this.add.image(0, 0, KEYS.IMAGES.Stars).setScale(4);
+        //Player
         this.Ship = new Player(this.mWorld, 400, 200, KEYS.SPRITES.GreenShip)
 
         //Camera
         this.cameras.main.startFollow(this.Ship)
             .setZoom(.5);
-
+        //audio
         this.sound.pauseOnBlur = false;  
         this.sound.loopEndOffset = 2;
         this.intro = this.sound.add(KEYS.AUDIO.Intro)
+        this.music = this.sound.add(KEYS.AUDIO.Battle)
         this.intro.on("complete", () => {
-            this.sound.play(KEYS.AUDIO.Battle, {
+            this.music.play( {
                 loop: true,
                 volume: .5,
             })
         })
-
         this.intro.play({volume:.5});
-
+        //enemy
         this.Bad = new Enemy(this.mWorld, 0, 0, KEYS.SPRITES.Enemy);
-
+        //Hud
+        this.scene.launch("Hud",this.Ship);
+        //keyboard
         new KeyboardV2(this, this.Ship);
-
         this.input.keyboard.on('keyup_SPACE', (e) => {
             this.matter.add.sprite(this.Ship.x, this.Ship.y, KEYS.SPRITES.Missle)
                 .setSize(50, 50)
@@ -68,9 +72,24 @@ export default class Game extends Phaser.Scene {
                 .setFrictionAir(0)
                 .play(KEYS.ANIMATIONS.Missle);
         })  
+        this.input.keyboard.on('keyup_ENTER', (e) => {
+            this.scene.launch("Pause",[this.music,this.intro]);
+            this.scene.pause("Game");
+        }) 
+        this.input.keyboard.on('keyup_M', (e) => {  
+            if(this.music.config.mute){
+                this.music.setMute(false);
+                this.intro.setMute(false);
+            }
+            else{
+                this.music.setMute(true)
+                this.intro.setMute(true)
+            }    
+        })   
     }
  
     update() {
+          //Text
           new KeyControls(this.Ship)
     }
     

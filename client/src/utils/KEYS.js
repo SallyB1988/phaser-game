@@ -3,6 +3,7 @@ const KEYS = {
         Load: "Load",
         Menu: "Menu",
         Game: "Game",
+        Pause: "Pause",
     },
     IMAGES:{
         Stars:"StarMap",
