@@ -13,20 +13,18 @@ class SpaceGame extends Component {
   componentDidMount() {
     var config = {
       type: Phaser.AUTO,
-      width: 800,
-      height: 600,
-      parent: "display-region",
       physics: {
         default: 'matter',
         matter:{
           debug: true          
         }
-        // default:'arcade',
-        // arcade: {
-        //   debug: true,
-        //   gravity: { y: 200 }
-        // }
       },
+      scale: {
+        mode: Phaser.Scale.CENTER_BOTH,
+        parent: "display-region",
+        width: 800,
+        height: 600
+    },
       scene: [
         LoadScene,Game,Menu
       ]

@@ -33,7 +33,7 @@ class App extends Component {
           <Navigation routes={appRoutes} />
         <Image src="/images/game_central_logo.png" fluid />
 
-        <div id="display-region" className="py-3" >   
+        <div id="display-region" focus="true" >   
                  <Switch>
             <Route exact path="/" component={Instructions} />
             <Route exact path="/spacegame" component={SpaceGame} />
