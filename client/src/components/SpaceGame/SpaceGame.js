@@ -39,8 +39,10 @@ class SpaceGame extends Component {
   }
 
   componentWillUnmount() {
-    let dummy = [50, 30];
-    this.props.updateScores(dummy);
+    let score = 50
+    console.log(this.fired);
+    let data = { score: score, fired: this.fired }
+    this.props.updateScores(data);
   }
 
   preload() {

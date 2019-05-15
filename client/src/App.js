@@ -17,11 +17,12 @@ const appRoutes = [
 
 class App extends Component {
   state = {
-    scores: []
+    score: 0,
+    fired: 0
   }
 
-  handleScores = (newScores) => {
-    this.setState({ scores: newScores })
+  handleScores = (data) => {
+    this.setState({ data })
   }
 
   render() {
@@ -33,6 +34,8 @@ class App extends Component {
           <Navigation routes={appRoutes} />
         <Image src="/images/game_central_logo.png" fluid />
 
+        <h3>Score: {this.state.score}</h3>
+        <h3>Bullets Fired: {this.state.fired}</h3>
         <div id="display-region" focus="true" >   
                  <Switch>
             <Route exact path="/" component={Instructions} />
