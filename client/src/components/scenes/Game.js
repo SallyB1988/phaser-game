@@ -43,9 +43,11 @@ export default class Game extends Phaser.Scene {
 
         this.sound.pauseOnBlur = false;  
         this.sound.loopEndOffset = 2;
+
         this.intro = this.sound.add(KEYS.AUDIO.Intro)
+        this.music = this.sound.add(KEYS.AUDIO.Battle)
         this.intro.on("complete", () => {
-            this.sound.play(KEYS.AUDIO.Battle, {
+            this.music.play( {
                 loop: true,
                 volume: .5,
             })
@@ -71,9 +73,19 @@ export default class Game extends Phaser.Scene {
         })  
 
         this.input.keyboard.on('keyup_ENTER', (e) => {
-            console.log("attempt");
-            this.scene.start("Pause","Opened");
-        })  
+            this.scene.launch("Pause",[this.music,this.intro]);
+            this.scene.pause("Game");
+        }) 
+        this.input.keyboard.on('keyup_M', (e) => {  
+            if(this.music.config.mute){
+                this.music.setMute(false);
+                this.intro.setMute(false);
+            }
+            else{
+                this.music.setMute(true)
+                this.intro.setMute(true)
+            }    
+        })   
     }
  
     update() {
