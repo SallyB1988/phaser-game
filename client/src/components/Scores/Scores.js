@@ -26,7 +26,7 @@ class Scores extends Component {
 
         {this.state.users.map(u => {
           return (
-            <Row className="justify-content-center">
+            <Row key={`$u.firstName}-${u.lastName}`} className="justify-content-center">
               <Col md={6}>
                 <h3>
                   {u.firstName} {u.lastName}

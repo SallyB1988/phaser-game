@@ -15,6 +15,7 @@ class SpaceGame extends Component {
       type: Phaser.AUTO,
       width: 800,
       height: 600,
+      parent: "display-region",
       physics: {
         default: 'matter',
         matter:{

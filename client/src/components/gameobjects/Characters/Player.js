@@ -1,5 +1,4 @@
-import Phaser,{Physics} from "phaser";
-import Game from "../../scenes/Game.js";
+import Phaser from "phaser";
 
 export default class Player extends Phaser.Physics.Matter.Sprite {
     constructor(world, x, y, texture) {

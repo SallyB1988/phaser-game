@@ -10,7 +10,7 @@ function Navigation(props) {
         {routes.map(r => {
           return (
             <Nav.Link key={r.path} href={r.path}>
-              {r.name}
+              <Button>{r.name}</Button>
             </Nav.Link>
           );
         })}
