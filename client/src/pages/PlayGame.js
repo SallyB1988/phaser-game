@@ -2,6 +2,7 @@ import { Component } from "react";
 import LoadScene from "../components/scenes/LoadScene"
 import Game from "../components/scenes/Game";
 import Menu from "../components/scenes/Menu";
+import Pause from "../components/scenes/Pause.js";
 import Phaser from "phaser";
 import { World } from "phaser/src/physics/matter-js/CustomMain";
 
@@ -27,7 +28,11 @@ class PlayGame extends Component {
         // }
       },
       scene: [
-        LoadScene,Game,Menu
+        LoadScene,
+        Game,
+        Pause,
+        Menu,
+        
       ]
 
     };

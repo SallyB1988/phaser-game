@@ -36,7 +36,7 @@ export default class LoadScene extends Phaser.Scene{
     }
 
     create(){
-        this.scene.start("Menu","Passing Data Around")
+        this.scene.start("Menu")
     }
 
 }

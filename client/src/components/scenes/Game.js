@@ -8,7 +8,8 @@ export default class Game extends Phaser.Scene {
     constructor() {
         super({ key: "Game" })
     }
-    init() {
+    init(data) {
+        console.log(data);
     }
 
     preload() {
@@ -67,6 +68,11 @@ export default class Game extends Phaser.Scene {
                 .setCollidesWith([1, 4])
                 .setFrictionAir(0)
                 .play(KEYS.ANIMATIONS.Missle);
+        })  
+
+        this.input.keyboard.on('keyup_ENTER', (e) => {
+            console.log("attempt");
+            this.scene.start("Pause","Opened");
         })  
     }
  

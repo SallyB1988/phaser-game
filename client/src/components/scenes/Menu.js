@@ -1,14 +1,11 @@
 
 import Phaser from "phaser";
-import Game from "./Game";
 export default class Menu extends Phaser.Scene {
     constructor() {
         super({ key: "Menu" })
     }
 
-    init(data) {
-        console.log(data);
-        console.log("pretty cool");
+    init() {
     }
 
     preload() {
@@ -21,7 +18,7 @@ export default class Menu extends Phaser.Scene {
         this.startText.setTint(0xff00ff, 0xffff00, 0x0000ff, 0xff0000);
         this.startText.setInteractive();
         this.startText.on("pointerdown", () => {
-            this.scene.start("Game");
+            this.scene.start("Pause","open");
         })
 
         // this.endText= this.add.text(400, 400, 'End');
