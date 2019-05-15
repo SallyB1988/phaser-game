@@ -1,24 +1,29 @@
-import { Component } from "react";
-import LoadScene from "../scenes/LoadScene"
-import Game from "../scenes/Game";
-import Menu from "../scenes/Menu";
-import Pause from "../scenes/Pause";
-import Hud from "../scenes/Hud";
+import React from "react";
+import { Game, LoadScene, Menu, Pause, Hud } from "../scenes/";
 import Phaser from "phaser";
-import { World } from "phaser/src/physics/matter-js/CustomMain";
 
-class SpaceGame extends Component {
+class SpaceGame extends React.Component {
   constructor(props) {
     super(props);
-  }
 
-  componentDidMount() {
-    var config = {
+    this.state = {
+      score: 0,
+    }
+
+    this.handleScore = (obj) => {
+      return (
+        this.setState({
+        score:obj.score
+        })
+      )
+    }
+
+    this.config = {
       type: Phaser.AUTO,
       physics: {
         default: 'matter',
-        matter:{
-          debug: true          
+        matter: {
+          debug: true
         }
       },
       scale: {
@@ -26,41 +31,29 @@ class SpaceGame extends Component {
         // parent: "display-region",
         width: 800,
         height: 600
-    },
+      },
       scene: [
-        LoadScene,Game,Menu,Pause,Hud
+        LoadScene, new Game(this.handleScore), Menu, Pause, Hud
       ]
-
     };
+    this.game = new Phaser.Game(this.config);
 
-    this.game = new Phaser.Game(config);
-  }
-
-  // shouldComponentUpdate() {
-  //   return false;
-  // }
-
-  componentWillUnmount() {
-    let score = 50
-    console.log(this.fired);
-    let data = { score: score, fired: this.fired }
-    this.props.updateScores(data);
-  }
-
-  preload() {
 
   }
 
-  create() {
+
+
+
+
+  componentDidMount() {
     
-  new World(Game)
   }
-
-  update() {}
 
   render() {
-    return (null)
-  }
 
+    return (
+      <h1>Look at this score {this.state.score}</h1>
+    )
+  }
 }
 export default SpaceGame;

@@ -1,8 +1,9 @@
 import Phaser from "phaser";
 import KEYS from "../../utils/KEYS"
 export default class LoadScene extends Phaser.Scene{
-    constructor () {
+    constructor (props) {
         super({ key: "LoadScene"})
+        this.props = props
     }
 
     init(){
