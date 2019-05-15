@@ -2,6 +2,8 @@ import { Component } from "react";
 import LoadScene from "../scenes/LoadScene"
 import Game from "../scenes/Game";
 import Menu from "../scenes/Menu";
+import Pause from "../scenes/Pause";
+import Hud from "../scenes/Hud";
 import Phaser from "phaser";
 import { World } from "phaser/src/physics/matter-js/CustomMain";
 
@@ -20,13 +22,13 @@ class SpaceGame extends Component {
         }
       },
       scale: {
-        mode: Phaser.Scale.CENTER_BOTH,
+        // mode: Phaser.Scale.CENTER_BOTH,
         // parent: "display-region",
         width: 800,
         height: 600
     },
       scene: [
-        LoadScene,Game,Menu
+        LoadScene,Game,Menu,Pause,Hud
       ]
 
     };
