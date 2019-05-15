@@ -13,7 +13,15 @@ const KEYS = {
         BigRedShip: "BigRedShip",
         Enemy: "Enemy",
         Duck: "MuscleDuck",
+        Missle: "MissleProjectile",
 
+    },
+    ANIMATIONS:{
+        Missle:"ShootingAnimation",
+    },
+    AUDIO:{
+        Intro: "IntroBattle",
+        Battle:"BattleMusic",
     }
 }
 export default KEYS

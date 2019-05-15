@@ -1,0 +1,408 @@
+﻿Title:
+    NES Shooter Music (5 tracks, 3 jingles)
+
+Author:
+    SketchyLogic
+
+URL:
+    https://opengameart.org/content/nes-shooter-music-5-tracks-3-jingles
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * FTM.zip
+    * WAV.zip
+
+----------------------------------------
+
+Title:
+    "Society In Ruins"
+
+Author:
+    Spring
+
+URL:
+    https://opengameart.org/content/society-in-ruins
+
+License(s):
+    * CC-BY 3.0 ( http://creativecommons.org/licenses/by/3.0/legalcode )
+    * CC-BY-SA 3.0 ( http://creativecommons.org/licenses/by-sa/3.0/legalcode )
+    * OGA-BY 3.0 ( http://static.opengameart.org/OGA-BY-3.0.txt )
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * Society in Ruins.mp3
+
+----------------------------------------
+
+Title:
+    We Are Prophet - Happy, Energetic Tune
+
+Author:
+    TinyWorlds
+
+URL:
+    https://opengameart.org/content/we-are-prophet-happy-energetic-tune
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * bu-offensive-birds.mp3
+
+----------------------------------------
+
+Title:
+    5 Chiptunes (Action)
+
+Author:
+    SubspaceAudio
+
+URL:
+    https://opengameart.org/content/5-chiptunes-action
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * 5 Action Chiptunes By Juhani Junkala.zip
+
+----------------------------------------
+
+Title:
+    512 Sound Effects (8-bit style)
+
+Author:
+    SubspaceAudio
+
+URL:
+    https://opengameart.org/content/512-sound-effects-8-bit-style
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * The Essential Retro Video Game Sound Effects Collection [512 sounds].zip
+
+----------------------------------------
+
+Title:
+    Victorious
+
+Author:
+    SpiderDave
+
+URL:
+    https://opengameart.org/content/victorious
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+Copyright/Attribution Notice:
+    No attribution required. If you want to credit me anyway, credit me as "SpiderDave".
+
+File(s):
+    * 29 Victorious 8-bit.ogg
+
+----------------------------------------
+
+Title:
+    moon chime
+
+Author:
+    Oddroom
+
+URL:
+    https://opengameart.org/content/moon-chime
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * tipa16.mp3
+    * tipa16-01.mp3
+
+----------------------------------------
+
+Title:
+    Tunnel Music
+
+Author:
+    Écrivain
+
+URL:
+    https://opengameart.org/content/tunnel-music
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * tunnel.ogg
+    * menu.ogg
+
+----------------------------------------
+
+Title:
+    10 8bit coin sounds
+
+Author:
+    Luke.RUSTLTD
+
+URL:
+    https://opengameart.org/content/10-8bit-coin-sounds
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * coin_sounds.zip
+
+----------------------------------------
+
+Title:
+    Insert Coin
+
+Author:
+    megupets
+
+URL:
+    https://opengameart.org/content/insert-coin
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+Copyright/Attribution Notice:
+    you dont have to but if you want you can give me credit by adding this to your project " Song by megupets, for more go to megupets.com"
+
+File(s):
+    * Insert Coin.mp3
+
+----------------------------------------
+
+Title:
+    Continue?
+
+Author:
+    megupets
+
+URL:
+    https://opengameart.org/content/continue
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+Copyright/Attribution Notice:
+    You dont have to give any attribution but if you like you can just add my website www.megupets.com
+
+File(s):
+    * 06 - Continue.mp3
+
+----------------------------------------
+
+Title:
+    Andy&#039;s report (8bit and piano ver)
+
+Author:
+    megupets
+
+URL:
+    https://opengameart.org/content/andys-report-8bit-and-piano-ver
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+Copyright/Attribution Notice:
+    this is public domain but if you want to throw in some kudos to me just put in my website www.megupets.com . Thanks
+
+File(s):
+    * Andys Report.mp3
+    * Andys Report (piano).mp3
+
+----------------------------------------
+
+Title:
+    8Bit Theme
+
+Author:
+    Joth
+
+URL:
+    https://opengameart.org/content/8bit-theme
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * 8Bit Theme.mp3
+
+----------------------------------------
+
+Title:
+    8bit SFX
+
+Author:
+    celestialghost8
+
+URL:
+    https://opengameart.org/content/8bit-sfx
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * sfx.zip
+    * 1.wav
+    * 2.wav
+    * 3.wav
+    * 4.wav
+    * 5.wav
+    * 6.wav
+    * 7.wav
+    * 8.wav
+    * 9.wav
+    * 10.wav
+    * 11.wav
+    * 12.wav
+
+----------------------------------------
+
+Title:
+    8-Bit Sound Effect Pack (Vol. 001)
+
+Author:
+    Xenocity
+
+URL:
+    https://opengameart.org/content/8-bit-sound-effect-pack-vol-001
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * 8-bit Sound Effects Pack 001.zip
+    * DEMO.mp3
+
+----------------------------------------
+
+Title:
+    Long Away Home [8bit]
+
+Author:
+    nene
+
+URL:
+    https://opengameart.org/content/long-away-home-8bit
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * Long Away Home.mid
+    * Long Away Home.wav
+
+----------------------------------------
+
+Title:
+    Strut
+
+Author:
+    chasersgaming
+
+URL:
+    https://opengameart.org/content/strut
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+Copyright/Attribution Notice:
+    free to use as you want.
+
+File(s):
+    * Strut.mp3.mp3
+    * Strut.oggvorbis.ogg
+
+----------------------------------------
+
+Title:
+    Build
+
+Author:
+    chasersgaming
+
+URL:
+    https://opengameart.org/content/build
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+Copyright/Attribution Notice:
+    free to use as you want.
+
+File(s):
+    * build.mp3.mp3
+    * build.oggvorbis.ogg
+
+----------------------------------------
+
+Title:
+    Go Lucky
+
+Author:
+    chasersgaming
+
+URL:
+    https://opengameart.org/content/go-lucky
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+Copyright/Attribution Notice:
+    free to use as you want
+
+File(s):
+    * golucky.mp3.mp3
+    * golucky.oggvorbis.ogg
+
+----------------------------------------
+
+Title:
+    ChipScape
+
+Author:
+    chasersgaming
+
+URL:
+    https://opengameart.org/content/chipscape
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+Copyright/Attribution Notice:
+    free to use as you want
+
+File(s):
+    * chipscape.mp3.mp3
+    * chipscape.oggvorbis.ogg
+
+----------------------------------------
+
+Title:
+    Lasso Lady (seamless loop)
+
+Author:
+    congusbongus
+
+URL:
+    https://opengameart.org/content/lasso-lady-seamless-loop
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * lassolady.ogg
+    * lassolady.zip
+
+----------------------------------------
+
+
