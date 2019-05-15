@@ -8,8 +8,7 @@ export default class Game extends Phaser.Scene {
     constructor() {
         super({ key: "Game" })
     }
-    init(data) {
-        console.log(data);
+    init() {
     }
 
     preload() {
@@ -36,19 +35,17 @@ export default class Game extends Phaser.Scene {
                 console.log(this.Ship.score);                
             }
         })
-        console.log(this.mWorld);
-
+        //Background
         this.add.image(0, 0, KEYS.IMAGES.Stars).setScale(4);
+        //Player
         this.Ship = new Player(this.mWorld, 400, 200, KEYS.SPRITES.GreenShip)
 
         //Camera
         this.cameras.main.startFollow(this.Ship)
             .setZoom(.5);
-
         //audio
         this.sound.pauseOnBlur = false;  
         this.sound.loopEndOffset = 2;
-
         this.intro = this.sound.add(KEYS.AUDIO.Intro)
         this.music = this.sound.add(KEYS.AUDIO.Battle)
         this.intro.on("complete", () => {
@@ -58,13 +55,10 @@ export default class Game extends Phaser.Scene {
             })
         })
         this.intro.play({volume:.5});
-
         //enemy
-        
         this.Bad = new Enemy(this.mWorld, 0, 0, KEYS.SPRITES.Enemy);
-
-
-
+        //Hud
+        this.scene.launch("Hud",this.Ship);
         //keyboard
         new KeyboardV2(this, this.Ship);
         this.input.keyboard.on('keyup_SPACE', (e) => {
@@ -96,6 +90,7 @@ export default class Game extends Phaser.Scene {
     }
  
     update() {
+          //Text
           new KeyControls(this.Ship)
     }
     

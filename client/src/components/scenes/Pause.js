@@ -1,4 +1,3 @@
-
 import Phaser from "phaser";
 export default class Pause extends Phaser.Scene {
     constructor() {
