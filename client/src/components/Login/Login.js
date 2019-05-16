@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-// import Jumbotron from "../components/Jumbotron";
-import API from "../utils/API";
+import API from "../../utils/API";
 import { Row, Col, Container, Jumbotron, Button } from "react-bootstrap";
-import { Input, FormBtn } from "../components/Form";
+import { Input, FormBtn } from "../Form";
 
-class Users extends Component {
+class Login extends Component {
   state = {
     users: [],
     firstName: "",
@@ -57,15 +56,7 @@ class Users extends Component {
     return (
       <Container fluid>
         <Row>
-          <Button onClick={this.handleStartGame}>
-            Start Game
-          </Button>
-        </Row>
-        <Row>
           <Col size="md-6 mx-auto">
-            <Jumbotron>
-              <h1>Who Are You?</h1>
-            </Jumbotron>
             <form>
               <Input
                 value={this.state.firstName}
@@ -93,4 +84,4 @@ class Users extends Component {
   }
 }
 
-export default Users;
+export default Login;
