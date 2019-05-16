@@ -37,7 +37,7 @@ class SpaceGame extends React.Component {
     console.log(this.props.history);
     this.props.history.push('./scores');
     this.game.destroy();
-    document.getElementById("display-region").value="";
+    document.getElementById("display-region").innerHTML="";
   };
 
   render() {
