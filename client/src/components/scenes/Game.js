@@ -23,6 +23,21 @@ export default class Game extends Phaser.Scene {
         frames: [0, 1, 2, 3, 4]
       })
     });
+
+    //audio
+    this.sound.pauseOnBlur = false;
+    this.sound.loopEndOffset = 2;
+    this.intro = this.sound.add(KEYS.AUDIO.Intro);
+    this.music = this.sound.add(KEYS.AUDIO.Battle);
+    this.intro.on("complete", () => {
+      this.music.play({
+        loop: true,
+        volume: 0.5
+      });
+    });
+    this.intro.play({ volume: 0.5 });
+
+
   }
 
   create = () => {
@@ -73,9 +88,11 @@ export default class Game extends Phaser.Scene {
         ) {
           // player and enemy collided - game over
           console.log("game over");
+          this.scene.launch("Gameover", [this.music, this.intro,this.Ship]);
+          this.scene.pause("Game");
           // bod1.gameObject.destroy();
           // bod2.gameObject.destroy();
-          this.props[2]();
+          // this.props[2]();
         }
       }
     });
@@ -86,18 +103,7 @@ export default class Game extends Phaser.Scene {
 
     //Camera
     this.cameras.main.startFollow(this.Ship).setZoom(0.5);
-    //audio
-    this.sound.pauseOnBlur = false;
-    this.sound.loopEndOffset = 2;
-    this.intro = this.sound.add(KEYS.AUDIO.Intro);
-    this.music = this.sound.add(KEYS.AUDIO.Battle);
-    this.intro.on("complete", () => {
-      this.music.play({
-        loop: true,
-        volume: 0.5
-      });
-    });
-    this.intro.play({ volume: 0.5 });
+    
     //enemy
     this.Bad = new Enemy(this.mWorld, 0, 0, KEYS.SPRITES.Enemy);
     //Hud
