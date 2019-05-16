@@ -1,7 +1,8 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+
 import { Game, LoadScene, Menu, Pause, Hud } from "../scenes/";
 import Phaser from "phaser";
-
 class SpaceGame extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +23,7 @@ class SpaceGame extends React.Component {
       },
       scene: [
         LoadScene,
-        new Game([this.props.updateScore, this.props.updateFired]),
+        new Game([this.props.updateScore, this.props.updateFired, this.endGame]),
         Menu,
         Pause,
         Hud
@@ -31,9 +32,16 @@ class SpaceGame extends React.Component {
     this.game = new Phaser.Game(this.config);
   }
 
+  
+  endGame = () => {
+    this.game.destroy();
+    document.getElementById("display-region").value="";
+    this.props.history.push('./scores');
+  };
+
   render() {
     return null;
   }
 }
 
-export default SpaceGame;
+export default withRouter(SpaceGame);

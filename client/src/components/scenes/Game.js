@@ -72,9 +72,10 @@ export default class Game extends Phaser.Scene {
           (body1 === "enemy" && body2 === "player")
         ) {
           // player and enemy collided - game over
-          // console.log("game over");
+          console.log("game over");
           // bod1.gameObject.destroy();
           // bod2.gameObject.destroy();
+          this.props[2]();
         }
       }
     });

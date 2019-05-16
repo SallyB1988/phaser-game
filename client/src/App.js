@@ -31,7 +31,10 @@ class App extends Component {
     this.setState({ fired: fired });
   };
 
+  getCurrentScore = () => this.state.score;
+
   render() {
+    // const { history } = this.props;
     return (
       <Router>
         <Container fluid className="w-75">
@@ -54,7 +57,7 @@ class App extends Component {
                 />
               )}
             />
-            <Route exact path="/scores" component={Scores} />
+            <Route exact path="/scores" render={() => <Scores getCurrentScore={this.getCurrentScore} />} />
             <Route component={NoMatch} />
           </Switch>
           </div>
