@@ -1,6 +1,4 @@
 import Phaser from "phaser";
-import DB from "../../controllers/usersController"
-
 export default class Gameover extends Phaser.Scene {
     constructor() {
         super({ key: "Gameover" })
