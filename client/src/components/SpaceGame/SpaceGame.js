@@ -15,8 +15,8 @@ class SpaceGame extends React.Component {
         }
       },
       scale: {
-        // mode: Phaser.Scale.CENTER_BOTH,
-        // parent: "display-region",
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        parent: "display-region",
         width: 800,
         height: 600
       },
