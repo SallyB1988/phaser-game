@@ -12,4 +12,8 @@ router
   .route("/")
   .get(scoresController.findAll);
 
+router
+  .route("/:id")
+  .put(scoresController.update);
+
 module.exports = router;

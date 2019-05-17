@@ -23,7 +23,7 @@ class SpaceGame extends React.Component {
       },
       scene: [
         LoadScene,
-        new Game([this.props.updateScore, this.props.updateFired, this.endGame]),
+        new Game([this.props.updateGameScore, this.props.updateFired, this.endGame]),
         Menu,
         Pause,
         Hud

@@ -5,17 +5,32 @@ import { Instructions,
   SpaceGame,
   Login
  } from "../../components";
+ import API from "../../utils/API";
 
 import NoMatch from "../../pages/NoMatch";
 
 
 class MainDisplayRegion extends Component {
   state = {
-    playerFirstName: "Guest",
-    playerLastName: "",
+    scoreBoard: [],
+    firstName: "Guest",
+    lastName: "",
+    playerId: "",
     score: 0,
     fired: 0
   };
+
+  componentDidMount() {
+    this.getScoreBoard();
+  }
+
+  getScoreBoard = () => {
+    API.getScores()
+    .then(res => {
+      this.setState({ scoreBoard: res.data });
+    })
+    .catch(err => console.log(err));
+  }
 
   handleScores = score => {
     this.setState({ score: score });
@@ -25,24 +40,43 @@ class MainDisplayRegion extends Component {
     this.setState({ fired: fired });
   };
 
+  handleLogin = (data) => {
+    console.log("updating data in App");
+    console.log(data);
+    this.setState({...data, playerId: data._id});
+    console.log('done');
+  }
+
+  getPlayerInfo = () => {
+    return ({
+    firstName: this.state.firstName,
+    lastName: this.state.lastName,
+    playerId: this.state.playerId,
+    score: this.state.score,
+    fired: this.state.fired
+  })
+  }
+
+  getScoreBoard = () => this.state.scoreBoard;
+
   render() {
     return (
       <div id="display-region" focus="true" >   
-      <h3>Welcome {this.state.playerFirstName}</h3>
+      <h3>Welcome {this.state.firstName} {this.state.lastName}</h3>
         <Switch>
           <Route exact path="/" component={Instructions} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login" render={() => <Login playerLogin={this.handleLogin} /> }/>
           <Route
             exact
             path="/spacegame"
             render={() => (
               <SpaceGame
-                updateScore={this.handleScores}
+                updateGameScore={this.handleScores}
                 updateFired={this.handleBulletsFired}
               />
             )}
           />
-          <Route exact path="/scores" render={() => <Scores playerInfo={this.state} />} />
+          <Route exact path="/scores" render={() => <Scores getPlayerInfo={this.getPlayerInfo} getScoreBoard={this.getScoreBoard} />} />
           <Route component={NoMatch} />
         </Switch>
       </div>
