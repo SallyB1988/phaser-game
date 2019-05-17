@@ -3,6 +3,11 @@ import KEYS from "../../utils/KEYS";
 import { Player, Enemy } from "../gameobjects/Characters";
 import KeyboardV2 from "../gameobjects/KeyboardV2";
 import KeyControls from "../gameobjects/KeyboardControls";
+// import { clearScreenDown } from "readline";
+
+
+const enemies = [KEYS.SPRITES.YellowDuck, KEYS.SPRITES.GreenDuck, KEYS.SPRITES.PinkDuck, KEYS.SPRITES.PurpleDuck];
+// const enemies = [ KEYS.SPRITES.Enemy, KEYS.SPRITES.YellowDuck, KEYS.SPRITES.GreenDuck, KEYS.SPRITES.PinkDuck, KEYS.SPRITES.PurpleDuck];
 
 export default class Game extends Phaser.Scene {
   constructor(props) {
@@ -65,7 +70,7 @@ export default class Game extends Phaser.Scene {
             this.mWorld,
             Phaser.Math.Between(0, 1600),
             Phaser.Math.Between(0, 1200),
-            KEYS.SPRITES.Enemy
+            this.getRandomEnemy()
           );
         } else if (
           (body1 === "player" && body2 === "enemy") ||
@@ -75,7 +80,7 @@ export default class Game extends Phaser.Scene {
           console.log("game over");
           // bod1.gameObject.destroy();
           // bod2.gameObject.destroy();
-          this.props[2]();
+          this.props[2]();    // call game over function
         }
       }
     });
@@ -85,7 +90,7 @@ export default class Game extends Phaser.Scene {
     this.Ship = new Player(this.mWorld, 400, 200, KEYS.SPRITES.GreenShip);
 
     //Camera
-    this.cameras.main.startFollow(this.Ship).setZoom(0.5);
+    this.cameras.main.startFollow(this.Ship).setZoom(0.75);
     //audio
     this.sound.pauseOnBlur = false;
     this.sound.loopEndOffset = 2;
@@ -99,7 +104,7 @@ export default class Game extends Phaser.Scene {
     });
     this.intro.play({ volume: 0.5 });
     //enemy
-    this.Bad = new Enemy(this.mWorld, 0, 0, KEYS.SPRITES.Enemy);
+    this.Bad = new Enemy(this.mWorld, Phaser.Math.Between(200, 1400), Phaser.Math.Between(200, 1000), this.getRandomEnemy());
     //Hud
     this.scene.launch("Hud", this.Ship);
     //keyboard
@@ -140,5 +145,9 @@ export default class Game extends Phaser.Scene {
   update() {
     //Text
     new KeyControls(this.Ship);
+  }
+
+  getRandomEnemy() {
+    return enemies[Math.floor(Math.random() * enemies.length)]
   }
 }

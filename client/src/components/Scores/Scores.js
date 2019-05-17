@@ -7,24 +7,27 @@ class Scores extends Component {
     users: []
   };
 
-  currentScore = 0;
   // When this component mounts, grab the user with the _id of this.props.match.params.id
   // e.g. localhost:3000/users/599dcb67f0f16317844583fc
   componentDidMount() {
-    this.currentScore = this.props.getCurrentScore();
-    console.log('current score: ' + this.currentScore);
+    // this.currentScore = this.props.getCurrentScore();
+    // console.log('current score: ' + this.currentScore);
     API.getScores()
-      .then(res => {
-        console.log(res.data);
-        this.setState({ users: res.data });
-      })
-      .catch(err => console.log(err));
+    .then(res => {
+      console.log(res.data);
+      this.setState({ users: res.data });
+    })
+    .catch(err => console.log(err));
   }
-
+  
   render() {
+    const { playerFirstName, playerLastName, score, fired } = this.props.playerInfo;
     return (
       <>
-        <h3>Your Score: {this.currentScore}</h3> 
+        <Row className="d-flex justify-content-center my-3">
+          <h3>{playerFirstName} {playerLastName} fired {fired} bullets</h3>
+          <h3>Total Score: {score}</h3>
+        </Row>
         <Row className="d-flex justify-content-center my-3" >
           <h1>HIGH SCORES</h1>
         </Row>

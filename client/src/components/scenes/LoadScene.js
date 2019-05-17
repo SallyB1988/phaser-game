@@ -12,6 +12,10 @@ export default class LoadScene extends Phaser.Scene {
     this.load.image(KEYS.IMAGES.Stars, "/images/star_sky.jpg");
     this.load.image(KEYS.SPRITES.Duck, "/images/muscleDuck.png");
     this.load.image(KEYS.SPRITES.Enemy, "/images/unicornduck.jpeg");
+    this.load.image(KEYS.SPRITES.PinkDuck, "/images/pinkDuck.png");
+    this.load.image(KEYS.SPRITES.YellowDuck, "/images/yellowDuck.png");
+    this.load.image(KEYS.SPRITES.GreenDuck, "/images/greenDuck.png");
+    this.load.image(KEYS.SPRITES.PurpleDuck, "/images/purpleDuck.png");
     this.load.image(
       KEYS.SPRITES.GreenShip,
       "/images/spikedship3smallgreen.png"
