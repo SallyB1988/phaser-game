@@ -19,6 +19,8 @@ const appRoutes = [
 
 class App extends Component {
   state = {
+    playerFirstName: "Guest",
+    playerLastName: "",
     score: 0,
     fired: 0
   };
@@ -31,7 +33,7 @@ class App extends Component {
     this.setState({ fired: fired });
   };
 
-  getCurrentScore = () => this.state.score;
+  // getPlayerInfo = () => this.state;
 
   render() {
     // const { history } = this.props;
@@ -57,7 +59,7 @@ class App extends Component {
                 />
               )}
             />
-            <Route exact path="/scores" render={() => <Scores getCurrentScore={this.getCurrentScore} />} />
+            <Route exact path="/scores" render={() => <Scores playerInfo={this.state} />} />
             <Route component={NoMatch} />
           </Switch>
           </div>

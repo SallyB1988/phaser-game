@@ -15,7 +15,10 @@ const KEYS = {
         Enemy: "Enemy",
         Duck: "MuscleDuck",
         Missle: "MissleProjectile",
-
+        YellowDuck: "YellowDuck",
+        GreenDuck: "GreenDuck",
+        PinkDuck: "PinkDuck",
+        PurpleDuck: "PurpleDuck",
     },
     ANIMATIONS:{
         Missle:"ShootingAnimation",
