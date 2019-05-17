@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { Navbar, Nav, Button } from "react-bootstrap";
 
 function Navigation(props) {
@@ -9,9 +11,9 @@ function Navigation(props) {
       <Nav className="mr-auto">
         {routes.map(r => {
           return (
-            <Nav.Link key={r.path} href={r.path}>
+            <Link key={r.path} to={r.path}>
               <Button>{r.name}</Button>
-            </Nav.Link>
+            </Link>
           );
         })}
       </Nav>
