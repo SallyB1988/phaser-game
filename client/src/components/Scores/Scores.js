@@ -33,6 +33,7 @@ class Scores extends Component {
          
   // When this component mounts, get the scoreboard data (in descending order)
   componentDidMount() {
+    // SALLY -- might not need this first call to API.getScores...
     API.getScores()
     .then((res) => {
       console.log('inside then');
@@ -43,11 +44,6 @@ class Scores extends Component {
       console.log('calling API getuser');
       console.log(this.props.playerId);
       return ( this.props.playerId ? API.getUser(this.props.playerId) : null )
-      // if (this.props.playerId) {
-      //   API.getUser(this.props.playerId)
-      // } else {
-      //   return null;
-      // }
     })
     .then( (res) => {
       console.log('what is highscore?');
@@ -77,7 +73,6 @@ class Scores extends Component {
      
     console.log('llllllllllllllllllllll');
     
-    // this.props.history.push("/scores");
   }
   
   

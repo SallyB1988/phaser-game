@@ -47,22 +47,21 @@ class MainDisplayRegion extends Component {
     console.log('done');
   }
 
-  getPlayerInfo = () => {
-    return ({
-    firstName: this.state.firstName,
-    lastName: this.state.lastName,
-    playerId: this.state.playerId,
-    score: this.state.score,
-    fired: this.state.fired
-  })
-  }
+  // getPlayerInfo = () => {
+  //   return ({
+  //   firstName: this.state.firstName,
+  //   lastName: this.state.lastName,
+  //   playerId: this.state.playerId,
+  //   score: this.state.score,
+  //   fired: this.state.fired
+  // })
+  // }
 
   getScoreBoard = () => this.state.scoreBoard;
 
   render() {
     return (
       <div id="display-region" focus="true" >   
-      <h3>Welcome {this.state.firstName} {this.state.lastName}</h3>
         <Switch>
           <Route exact path="/" component={Instructions} />
           <Route exact path="/login" render={() => <Login playerLogin={this.handleLogin} /> }/>

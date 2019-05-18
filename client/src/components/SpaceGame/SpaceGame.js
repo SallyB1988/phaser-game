@@ -29,9 +29,12 @@ class SpaceGame extends React.Component {
         Hud
       ]
     };
+  }
+  
+  componentDidMount() {
+    console.log('starting game!');
     this.game = new Phaser.Game(this.config);
   }
-
   
   endGame = () => {
     document.getElementById("display-region").innerHTML="";
