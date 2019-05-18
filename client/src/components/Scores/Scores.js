@@ -1,55 +1,96 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+
 import { Row, Col } from "react-bootstrap";
 import API from "../../utils/API";
 
-class Scores extends Component {
-  state = {
-    highScores: [],
-    playerInfo: {}
-  };
+const styles = {
+  gameScore: {
+    backgroundColor: "lightgrey",
+    paddingTop: 30,
+    paddingBottom: 30,
+  },
+  finalScore: {
+    fontSize: "42px",
+    paddingTop: 30,
+    paddingBottom: 30,
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+  }
+};
 
-  getScoreBoard = () => {
-    API.getScores()
-    .then(res => {
-      this.setState({ highScores: res.data });
-      return(res.data);
-    })
-    .catch(err => console.log(err));
+class Scores extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      highScores: []
+      // playerInfo: {}
+    };
   }
 
+         
   // When this component mounts, get the scoreboard data (in descending order)
   componentDidMount() {
-    this.getScoreBoard();
-    const playerInfo = this.props.getPlayerInfo();
-    this.checkPlayerNewScore(playerInfo.playerId, playerInfo.score)
-    this.setState({ playerInfo: playerInfo });
+    API.getScores()
+    .then((res) => {
+      console.log('inside then');
+      console.log(res);
+      this.setState({ highScores: res.data })
+    })
+    .then(() => {
+      console.log('calling API getuser');
+      console.log(this.props.playerId);
+      return ( this.props.playerId ? API.getUser(this.props.playerId) : null )
+      // if (this.props.playerId) {
+      //   API.getUser(this.props.playerId)
+      // } else {
+      //   return null;
+      // }
+    })
+    .then( (res) => {
+      console.log('what is highscore?');
+      console.log(res);
+      return ( res ? res.data.highScore : 0);  // if no data, return hs = 0
+    })
+    .then( (hs) => {
+      console.log('hs?');
+      console.log(hs);
+      console.log(this.props.playerScore);
+
+      return ( (this.props.playerScore > hs) ? 
+       API.updateScore(this.props.playerId, this.props.playerScore)
+       : null)
+      })
+    //   this.checkPlayerNewScore(this.props.playerId, this.props.playerScore);
+    // })
+    .then( () => API.getScores()
+    )
+    .then((res) => {
+      console.log('inside then');
+      console.log(res);
+      
+      this.setState({ highScores: res.data })
+    })
+    
+     
+    console.log('llllllllllllllllllllll');
+    
+    // this.props.history.push("/scores");
   }
   
-  // Check if player has new high score. If so, update the database an refresh the
-  // scoreboard data.
-  checkPlayerNewScore = (playerId, score) => {
-    // if player didn't log in, they are a 'guest' (and don't have an id) and their score is not saved
-    if (playerId === "") return
-       // new high score for existing player... update the database
-      API.getUser(playerId)
-      .then( (res) => {
-        if (score > res.data.highScore) {
-          API.updateScore(playerId, score)
-          .then((res) => {
-            this.getScoreBoard();
-          })
-        }
-      })
-      .catch(err => { console.log(err) }
-      );
-  };
-
-   render() {
+  
+  render() {
+    const {
+          playerScore,
+          playerFname,
+          playerLname,
+        } = this.props;
     return (
       <>
-        <Row className="d-flex justify-content-center my-3">
-          <h3>{this.state.playerInfo.firstName} {this.state.playerInfo.lastName} fired {this.state.playerInfo.fired} bullets</h3>
-          <h3>Total Score: {this.state.playerInfo.score}</h3>
+        <Row className="d-flex justify-content-center my-3" style={styles.gameScore}>
+          <h3 style={styles.finalScore}>{playerFname} {playerLname} Score: {playerScore}</h3>
         </Row>
         <Row className="d-flex justify-content-center my-3" >
           <h1>HIGH SCORES</h1>
@@ -74,4 +115,4 @@ class Scores extends Component {
   }
 }
 
-export default Scores;
+export default withRouter(Scores);

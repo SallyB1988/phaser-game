@@ -76,7 +76,16 @@ class MainDisplayRegion extends Component {
               />
             )}
           />
-          <Route exact path="/scores" render={() => <Scores getPlayerInfo={this.getPlayerInfo} getScoreBoard={this.getScoreBoard} />} />
+          <Route exact path="/scores"
+           render={() =>
+             <Scores 
+              playerId = {this.state.playerId}
+              playerScore = {this.state.score}
+              playerFname = {this.state.firstName}
+              playerLname = {this.state.lastName}
+              // getPlayerInfo={this.getPlayerInfo}
+              getScoreBoard={this.getScoreBoard} 
+           />} />
           <Route component={NoMatch} />
         </Switch>
       </div>
