@@ -23,18 +23,20 @@ class SpaceGame extends React.Component {
       },
       scene: [
         LoadScene,
-        new Game([this.props.updateScore, this.props.updateFired, this.endGame]),
+        new Game([this.props.updateGameScore, this.props.updateFired, this.endGame]),
         Menu,
         Pause,
         Hud
       ]
     };
+  }
+  
+  componentDidMount() {
+    console.log('starting game!');
     this.game = new Phaser.Game(this.config);
   }
-
   
   endGame = () => {
-    console.log(this.props.history);
     document.getElementById("display-region").innerHTML="";
     this.props.history.push('./scores');
     this.game.destroy();

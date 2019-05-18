@@ -12,7 +12,7 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    this.loadUsers();
+    this.loadUsers();   // SALLY -- use this later to check if user is already in system - then save id?
   }
 
   loadUsers = () => {
@@ -23,11 +23,28 @@ class Login extends Component {
       .catch(err => console.log(err));
   };
 
-  deleteUser = id => {
-    API.deleteUser(id)
-      .then(res => this.loadUsers())
-      .catch(err => console.log(err));
-  };
+
+  // If user is already in database, send data information back to state
+  // held in MainDisplayRegion
+  userExists = () => {
+    let exists = false;
+    let filtered = this.state.users.filter((u) => {
+      if (u.firstName === this.state.firstName.trim() &&
+          u.lastName === this.state.lastName.trim()) {
+            return u
+          }
+    })
+
+    if (filtered.length === 1) {
+      this.props.playerLogin(filtered[0]);
+      exists = true;
+    } else if (filtered.length > 1) {
+      alert('ERROR - duplicate player in database');
+    }
+
+    return exists;
+  }
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -37,14 +54,30 @@ class Login extends Component {
   };
 
   handleFormSubmit = event => {
+    console.log('inside handleform submit');
     event.preventDefault();
     if (this.state.firstName && this.state.lastName) {
-      API.saveUser({
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
+      if(!this.userExists()) {
+        API.saveUser({
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+        })
+          .then(res => {
+            this.props.playerLogin({
+              firstName: this.state.firstName.trim(),
+              lastName: this.state.lastName.trim(),
+              playerId: res.data._id
+            });
+          })
+          .catch(err => console.log(err));
+      }
+    } else {
+      this.props.playerLogin({
+        firstName: "Guest",
+        lastName: "",
+        playerId: ""
       })
-        .then(res => this.loadUsers())
-        .catch(err => console.log(err));
+      alert("Enter a first name and last name - otherwise you are a guest and your score will not be saved.");
     }
   };
 
