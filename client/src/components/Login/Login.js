@@ -1,14 +1,27 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Row, Col, Container, Jumbotron, Button } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import { Input, FormBtn } from "../Form";
+
+const styles = {
+  welcome: {
+    backgroundColor: "lightgrey",
+    marginTop: 80
+  },
+  welcomeText: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    textTransform: "uppercase"
+  }
+};
 
 class Login extends Component {
   state = {
     users: [],
     firstName: "",
     lastName: "",
-    highScore: 0
+    highScore: 0,
+    greeting: ""
   };
 
   componentDidMount() {
@@ -49,7 +62,7 @@ class Login extends Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value.toUpperCase()
     });
   };
 
@@ -59,17 +72,26 @@ class Login extends Component {
     if (this.state.firstName && this.state.lastName) {
       if(!this.userExists()) {
         API.saveUser({
-          firstName: this.state.firstName,
-          lastName: this.state.lastName,
+          firstName: this.state.firstName.trim().toUpperCase(),
+          lastName: this.state.lastName.trim().toUpperCase(),
         })
-          .then(res => {
+        .then(res => {
+          const fn = this.state.firstName.trim().toUpperCase();
+          const ln = this.state.lastName.trim().toUpperCase();
+          const msg = `Welcome ${fn} ${ln}`;
+          this.setState({ greeting: msg }, () => {
             this.props.playerLogin({
-              firstName: this.state.firstName.trim(),
-              lastName: this.state.lastName.trim(),
+              firstName: fn,
+              lastName: ln,
               playerId: res.data._id
-            });
+            })
           })
-          .catch(err => console.log(err));
+        })
+      } else {
+        const fn = this.state.firstName.trim().toUpperCase();
+        const ln = this.state.lastName.trim().toUpperCase();
+        const msg = `Welcome ${fn} ${ln}`;
+        this.setState({ greeting: msg })
       }
     } else {
       this.props.playerLogin({
@@ -81,15 +103,31 @@ class Login extends Component {
     }
   };
 
-  handleStartGame = () => {
-    this.props.history.push('./playgame');
-  };
+  // handleStartGame = () => {
+  //   this.props.history.push('./playgame');
+  // };
+
+  // handleUpdateGreeting = () => {
+  //   const msg = `Welcome ${this.state.firstName} ${this.state.lastName}`
+  //   this.props.setState({ greeting: msg })
+  // }
+
+  welcome = () => {
+    return(
+      <div style={styles.welcome} >
+        <h2 className="text-center" style={styles.welcomeText}>
+          {this.state.greeting}
+        </h2>
+      </div>
+    )
+  }
+
 
   render() {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6 mx-auto">
+          <Col md={{span: 6, offset: 3}} className="my-3">
             <form>
               <Input
                 value={this.state.firstName}
@@ -110,8 +148,12 @@ class Login extends Component {
                 Submit
               </FormBtn>
             </form>
+
+            { this.state.greeting ? this.welcome() : null }
+
           </Col>
         </Row>
+
       </Container>
     );
   }
