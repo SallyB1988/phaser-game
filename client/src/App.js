@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <Container fluid className="w-75">
         <Navigation routes={appRoutes} />
-        <Image src="/images/game_central_logo.png" className="d-block mx-auto my-2" style={{height: 250}} />
+        <Image src="/images/brainVacation.png" className="d-block mx-auto my-2" style={{height: 250}} />
         <MainDisplayRegion />
       </Container>
     );

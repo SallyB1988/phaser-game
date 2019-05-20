@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 
 import { Navbar, Nav, Button } from "react-bootstrap";
 
+const styles = {
+  navButton: {
+    backgroundColor: "#12A9A9",
+    border: "none",
+    margin: 2
+
+  }
+};
+
 function Navigation(props) {
   const { routes } = props;
 
@@ -12,7 +21,7 @@ function Navigation(props) {
         {routes.map(r => {
           return (
             <Link key={r.path} to={r.path}>
-              <Button>{r.name}</Button>
+              <Button style={styles.navButton}>{r.name}</Button>
             </Link>
           );
         })}
