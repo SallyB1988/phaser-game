@@ -29,17 +29,20 @@ class SpaceGame extends React.Component {
         Hud
       ]
     };
-    this.game = new Phaser.Game(this.config);
   }
   
   componentDidMount() {
-    console.log('starting game!');
+    this.game = new Phaser.Game(this.config);
+  }
+
+  componentWillUnmount() {
+    this.endGame()
   }
   
   endGame = () => {
     document.getElementById("display-region").innerHTML="";
     this.props.history.push('./scores');
-    this.game.destroy();
+    this.game.destroy(true);
   };
 
   render() {
