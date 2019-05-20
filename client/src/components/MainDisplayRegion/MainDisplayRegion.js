@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import { Modal, Image } from 'react-bootstrap';
 import { Instructions,
   Scores,
   SpaceGame,
-  Login
+  Login,
+  PanicModal
  } from "../../components";
  import API from "../../utils/API";
 
@@ -11,14 +13,15 @@ import NoMatch from "../../pages/NoMatch";
 
 
 class MainDisplayRegion extends Component {
-  state = {
-    scoreBoard: [],
-    firstName: "Guest",
-    lastName: "",
-    playerId: "",
-    score: 0,
-    fired: 0
-  };
+    state = {
+      scoreBoard: [],
+      firstName: "Guest",
+      lastName: "",
+      playerId: "",
+      score: 0,
+      fired: 0,
+      showModal: false,
+    };
 
   componentDidMount() {
     this.getScoreBoard();
@@ -39,6 +42,14 @@ class MainDisplayRegion extends Component {
   handleBulletsFired = fired => {
     this.setState({ fired: fired });
   };
+
+  handleModalShow = () => {
+    this.setState({ showModal: true });
+  }
+
+  handleModalHide = () => {
+    this.setState({ showModal: false });
+  }
 
   handleLogin = (data) => {
     console.log("updating data in App");
@@ -72,6 +83,7 @@ class MainDisplayRegion extends Component {
               <SpaceGame
                 updateGameScore={this.handleScores}
                 updateFired={this.handleBulletsFired}
+                handleModalShow={this.handleModalShow}
               />
             )}
           />
@@ -87,6 +99,11 @@ class MainDisplayRegion extends Component {
            />} />
           <Route component={NoMatch} />
         </Switch>
+
+        <PanicModal
+          modalOpen={this.state.showModal}
+          hideModal={this.handleModalHide}
+        />
       </div>
     );
   }

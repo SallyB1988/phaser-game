@@ -127,10 +127,19 @@ export default class Game extends Phaser.Scene {
         .setFrictionAir(0)
         .play(KEYS.ANIMATIONS.Missle);
     });
+
     this.input.keyboard.on("keyup_ENTER", e => {
       this.scene.launch("Pause", [this.music, this.intro]);
       this.scene.pause("Game");
     });
+
+    this.input.keyboard.on("keyup_P", e => {
+      this.scene.launch("Pause", [this.music, this.intro]);
+      this.music.setMute(true);
+      this.intro.setMute(true);
+      this.props[3]();
+    });
+
     this.input.keyboard.on("keyup_M", e => {
       if (this.music.config.mute) {
         this.music.setMute(false);

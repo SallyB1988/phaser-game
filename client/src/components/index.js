@@ -4,5 +4,6 @@ import Navigation from './Navigation';
 import Scores from './Scores';
 import SpaceGame from './SpaceGame';
 import MainDisplayRegion from './MainDisplayRegion';
+import PanicModal from './PanicModal';
 
-export { MainDisplayRegion, Instructions, Login, Navigation, Scores, SpaceGame };
+export { MainDisplayRegion, Instructions, Login, Navigation, Scores, SpaceGame, PanicModal };
