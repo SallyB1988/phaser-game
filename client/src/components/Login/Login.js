@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, ButtonToolbar, ToggleButtonGroup, ToggleButton } from "react-bootstrap";
 import { Input, FormBtn } from "../Form";
 
 const styles = {
@@ -36,7 +36,6 @@ class Login extends Component {
       .catch(err => console.log(err));
   };
 
-
   // If user is already in database, send data information back to state
   // held in MainDisplayRegion
   userExists = () => {
@@ -67,13 +66,12 @@ class Login extends Component {
   };
 
   handleFormSubmit = event => {
-    console.log('inside handleform submit');
     event.preventDefault();
     if (this.state.firstName && this.state.lastName) {
       if(!this.userExists()) {
         API.saveUser({
           firstName: this.state.firstName.trim().toUpperCase(),
-          lastName: this.state.lastName.trim().toUpperCase(),
+          lastName: this.state.lastName.trim().toUpperCase()
         })
         .then(res => {
           const fn = this.state.firstName.trim().toUpperCase();
@@ -103,15 +101,6 @@ class Login extends Component {
     }
   };
 
-  // handleStartGame = () => {
-  //   this.props.history.push('./playgame');
-  // };
-
-  // handleUpdateGreeting = () => {
-  //   const msg = `Welcome ${this.state.firstName} ${this.state.lastName}`
-  //   this.props.setState({ greeting: msg })
-  // }
-
   welcome = () => {
     return(
       <div style={styles.welcome} >
@@ -121,7 +110,6 @@ class Login extends Component {
       </div>
     )
   }
-
 
   render() {
     return (
@@ -141,6 +129,20 @@ class Login extends Component {
                 name="lastName"
                 placeholder="Last Name (required)"
               />
+              <h3>Select a Panic Screen</h3>
+              <p>(for when the boss is coming!)</p>
+            <ButtonToolbar>
+              <ToggleButtonGroup
+                type="radio"
+                name="overlay"
+                defaultValue="Overlay_vsCode"
+                onChange = {this.props.handlePanic}>
+                <ToggleButton className="mx-1" value="Overlay_vsCode">VSCode</ToggleButton>
+                <ToggleButton className="mx-1" value="Overlay_stackoverflow">JavaScript</ToggleButton>
+                <ToggleButton className="mx-1" value="Overlay_oracle">Java</ToggleButton>
+                <ToggleButton className="mx-1" value="Overlay_c++">C++</ToggleButton>
+              </ToggleButtonGroup>
+            </ButtonToolbar>
               <FormBtn
                 disabled={!(this.state.firstName && this.state.lastName)}
                 onClick={this.handleFormSubmit}
