@@ -52,6 +52,7 @@ export default class Game extends Phaser.Scene {
         if (body1 === "bullet") {
           bod1.gameObject.destroy();
         } else if (body2 === "bullet") {
+
           bod2.gameObject.destroy();
         }
       } else {
@@ -73,7 +74,7 @@ export default class Game extends Phaser.Scene {
           (body1 === "enemy" && body2 === "player")
         ) {
           // player and enemy collided - game over
-          console.log("game over");
+          this.props[3]();    // navigate to scoreboard
           this.props[2]();    // call game over function
         }
       }
@@ -132,7 +133,7 @@ export default class Game extends Phaser.Scene {
 
       this.music.setMute(true);
       this.intro.setMute(true);
-      this.props[3]();
+      this.props[4]();
     });
 
     // Toggle the music

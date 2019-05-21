@@ -7,6 +7,10 @@ class SpaceGame extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      closeFromGame: false,
+    }
+
     this.config = {
       type: Phaser.AUTO,
       physics: {
@@ -23,12 +27,13 @@ class SpaceGame extends React.Component {
       },
       scene: [
         LoadScene,
-        new Game([this.props.updateGameScore, this.props.updateFired, this.endGame, this.props.handleModalShow]),
+        new Game([this.props.updateGameScore, this.props.updateFired, this.endGame, this.closeFromGame, this.props.handleModalShow]),
         Menu,
         Pause,
         Hud
       ]
     };
+
   }
   
   componentDidMount() {
@@ -38,11 +43,20 @@ class SpaceGame extends React.Component {
   componentWillUnmount() {
     this.endGame()
   }
+
+  // If game is closed because game ended, set closeFromGame = true
+  // If game ends because user navigated to different page, leave
+  //    closeFromGame as false.  (Prevents scoreboard from showing
+  //    when person navigates to login or home page while playing the
+  //    space game.)
+  closeFromGame = () => {
+    this.setState({ closeFromGame: true })
+  }
   
   endGame = () => {
     document.getElementById("display-region").innerHTML="";
-    this.props.history.push('./scores');
     this.game.destroy(true);
+    if (this.state.closeFromGame) this.props.history.push('./scores');
   };
 
   render() {
