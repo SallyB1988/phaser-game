@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { IndexLinkContainer } from "react-router-dom";
 
 import { Navbar, Nav, Button } from "react-bootstrap";
+import { IndexLinkContainer } from "react-router-bootstrap";
 
 const styles = {
   navButton: {
@@ -20,9 +21,9 @@ function Navigation(props) {
       <Nav className="mr-auto">
         {routes.map(r => {
           return (
-            <Link key={r.path} to={r.path}>
+            <IndexLinkContainer key={r.path} to={r.path}>
               <Button style={styles.navButton}>{r.name}</Button>
-            </Link>
+            </IndexLinkContainer>
           );
         })}
       </Nav>
