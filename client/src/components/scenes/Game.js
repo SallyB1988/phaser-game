@@ -28,6 +28,8 @@ export default class Game extends Phaser.Scene {
         frames: [0, 1, 2, 3, 4]
       })
     });
+    this.maxEnemies = 1;
+    this.enemiesOnScreen = 0;
   }
 
   create = () => {
@@ -65,8 +67,10 @@ export default class Game extends Phaser.Scene {
           bod1.gameObject.destroy();
           bod2.gameObject.destroy();
           this.props[0](this.Ship.score);
-
-          this.spawnPoint();
+          this.enemiesOnScreen--;
+          if(this.Ship.score % 50 === 0){
+            this.maxEnemies++;
+          }
         } else if (
           (body1 === "player" && body2 === "enemy") ||
           (body1 === "enemy" && body2 === "player")
@@ -98,8 +102,6 @@ export default class Game extends Phaser.Scene {
       });
     });
     this.intro.play({ volume: 0.5 });
-    //enemy
-    this.Bad = new Enemy(this.mWorld, Phaser.Math.Between(200, 1400), Phaser.Math.Between(200, 1000), this.getRandomEnemy());
     //Hud
     this.scene.launch("Hud", this.Ship);
     //keyboard
@@ -139,7 +141,11 @@ export default class Game extends Phaser.Scene {
   update() {
     //Text
     new KeyControls(this.Ship);
-    
+
+    if(this.enemiesOnScreen < this.maxEnemies){
+
+      this.spawnPoint();
+    }
   }
 
   getRandomEnemy() {
@@ -147,6 +153,7 @@ export default class Game extends Phaser.Scene {
   }
 
   spawnPoint(){
+
     let x = Phaser.Math.Between(200, 1400)
     let y = Phaser.Math.Between(200, 1000)
     
@@ -158,6 +165,7 @@ export default class Game extends Phaser.Scene {
     }
     else{
     new Enemy(this.mWorld, x, y, this.getRandomEnemy());
+    this.enemiesOnScreen++;
     }
   }
 
