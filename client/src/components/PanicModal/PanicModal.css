@@ -6,11 +6,38 @@
   bottom: 40px;
 }
 
-.Overlay {
+.Overlay_vsCode {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("/images/panic.jpg");
+  background-image: url("/images/vscode_panic.jpg");
+}
+
+.Overlay_stackoverflow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/images/stackoverflow_panic.jpg");
+}
+
+.Overlay_oracle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/images/oraclejava_panic.jpg");
+}
+
+.Overlay_cpp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/images/c++_panic.jpg");
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Image, Container } from "react-bootstrap";
 import { Navigation, MainDisplayRegion } from "./components";
+import "./App.css";
 
 const appRoutes = [
   { name: "home", path: "/" },
@@ -13,7 +14,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container fluid className="w-75">
+      <Container id="main-container" fluid >
         <Navigation routes={appRoutes} />
         <Image src="/images/brainVacation.png" className="d-block mx-auto my-2" style={{height: 250}} />
         <MainDisplayRegion />

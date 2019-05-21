@@ -1,0 +1,16 @@
+#ranking {
+  height: 300px;
+  padding: 1em 1em;
+  overflow-y: scroll;
+  width: 80%;
+  margin: auto;
+  background-color: lightgray;
+}
+
+#player-score {
+  background-color: lightgray;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  width: 80%;
+  margin: auto;
+}

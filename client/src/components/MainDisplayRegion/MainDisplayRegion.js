@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import { Modal, Image } from 'react-bootstrap';
 import { Instructions,
   Scores,
   SpaceGame,
   Login,
   PanicModal
  } from "../../components";
- import API from "../../utils/API";
-
+import API from "../../utils/API";
 import NoMatch from "../../pages/NoMatch";
-
+import "./MainDisplay.css";
 
 class MainDisplayRegion extends Component {
     state = {
@@ -18,6 +16,7 @@ class MainDisplayRegion extends Component {
       firstName: "Guest",
       lastName: "",
       playerId: "",
+      panic: "Overlay_vsCode",
       score: 0,
       fired: 0,
       showModal: false,
@@ -52,21 +51,11 @@ class MainDisplayRegion extends Component {
   }
 
   handleLogin = (data) => {
-    console.log("updating data in App");
-    console.log(data);
-    this.setState({...data, playerId: data._id});
-    console.log('done');
+    this.setState({...data, playerId: data._id || data.playerId});
   }
-
-  // getPlayerInfo = () => {
-  //   return ({
-  //   firstName: this.state.firstName,
-  //   lastName: this.state.lastName,
-  //   playerId: this.state.playerId,
-  //   score: this.state.score,
-  //   fired: this.state.fired
-  // })
-  // }
+  handlePanic = (data) => {
+    this.setState({ panic: data });
+  }
 
   getScoreBoard = () => this.state.scoreBoard;
 
@@ -75,7 +64,7 @@ class MainDisplayRegion extends Component {
       <div id="display-region" focus="true" >   
         <Switch>
           <Route exact path="/" component={Instructions} />
-          <Route exact path="/login" render={() => <Login playerLogin={this.handleLogin} /> }/>
+          <Route exact path="/login" render={() => <Login playerLogin={this.handleLogin} handlePanic={this.handlePanic} /> }/>
           <Route
             exact
             path="/spacegame"
@@ -94,7 +83,6 @@ class MainDisplayRegion extends Component {
               playerScore = {this.state.score}
               playerFname = {this.state.firstName}
               playerLname = {this.state.lastName}
-              // getPlayerInfo={this.getPlayerInfo}
               getScoreBoard={this.getScoreBoard} 
            />} />
           <Route component={NoMatch} />
@@ -103,6 +91,7 @@ class MainDisplayRegion extends Component {
         <PanicModal
           modalOpen={this.state.showModal}
           hideModal={this.handleModalHide}
+          overlay={this.state.panic}
         />
       </div>
     );
