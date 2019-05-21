@@ -5,13 +5,7 @@ import { Row, Col } from "react-bootstrap";
 import API from "../../utils/API";
 import './Scores.css';
 
-
 const styles = {
-  // gameScore: {
-  //   backgroundColor: "lightgrey",
-  //   paddingTop: 30,
-  //   paddingBottom: 30,
-  // },
   finalScore: {
     fontSize: "42px",
     paddingTop: 30,
@@ -67,10 +61,11 @@ class Scores extends Component {
     return (
       <>
         <Row className="d-flex justify-content-center" id="player-score" >
-          <h3 style={styles.finalScore}>{playerFname} {playerLname} Score: {playerScore}</h3>
+          <Col md={6} className="text-right px-3" id="final-score">{playerFname} {playerLname}</Col>
+          <Col md={6} float-left> Score: {playerScore}</Col>
         </Row>
         <Row className="d-flex justify-content-center my-3" >
-          <h1>PLAYER RANKING</h1>
+          <h2>PLAYER RANKING</h2>
         </Row>
         <div id="ranking">
           {this.state.highScores.map(u => {

@@ -1,0 +1,16 @@
+.button-style {
+  background-color: #21c2b3;
+  outline-color: none;
+  border: none;
+  margin-left: 2px;
+  padding-top: 2px;
+  box-shadow: none !important;
+}
+
+
+.button-style:not(:disabled):not(.disabled).active,
+.button-style:hover,
+.button-style:active {
+  background-color: #198d81 !important;
+  box-shadow: none !important;
+}
