@@ -1,3 +1,7 @@
 #display-region {
   padding-bottom: 3em;
 }
+
+canvas {
+  margin-top: 0 !important;
+}

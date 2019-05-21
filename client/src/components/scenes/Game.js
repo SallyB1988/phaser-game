@@ -52,6 +52,7 @@ export default class Game extends Phaser.Scene {
         if (body1 === "bullet") {
           bod1.gameObject.destroy();
         } else if (body2 === "bullet") {
+
           bod2.gameObject.destroy();
         }
       } else {
@@ -73,7 +74,6 @@ export default class Game extends Phaser.Scene {
           (body1 === "enemy" && body2 === "player")
         ) {
           // player and enemy collided - game over
-          console.log("game over");
           this.props[3]();    // navigate to scoreboard
           this.props[2]();    // call game over function
         }
@@ -167,9 +167,6 @@ export default class Game extends Phaser.Scene {
     let x = Phaser.Math.Between(200, 1400)
     let y = Phaser.Math.Between(200, 1000)
     
-    console.log("this is x:"+x,"this is y:"+y);
-    console.log(Phaser.Math.Distance.Between(x,y,this.Ship.x,this.Ship.y));
-
     if(Phaser.Math.Distance.Between(x,y,this.Ship.x,this.Ship.y)<200){
     this.spawnPoint()
     }

@@ -33,6 +33,7 @@ class SpaceGame extends React.Component {
         Hud
       ]
     };
+
   }
   
   componentDidMount() {
