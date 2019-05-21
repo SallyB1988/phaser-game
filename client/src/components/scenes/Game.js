@@ -3,11 +3,8 @@ import KEYS from "../../utils/KEYS";
 import { Player, Enemy } from "../gameobjects/Characters";
 import KeyboardV2 from "../gameobjects/KeyboardV2";
 import KeyControls from "../gameobjects/KeyboardControls";
-// import { clearScreenDown } from "readline";
-
 
 const enemies = [KEYS.SPRITES.YellowDuck, KEYS.SPRITES.GreenDuck, KEYS.SPRITES.PinkDuck, KEYS.SPRITES.PurpleDuck];
-// const enemies = [ KEYS.SPRITES.Enemy, KEYS.SPRITES.YellowDuck, KEYS.SPRITES.GreenDuck, KEYS.SPRITES.PinkDuck, KEYS.SPRITES.PurpleDuck];
 
 export default class Game extends Phaser.Scene {
   constructor(props) {
@@ -78,8 +75,6 @@ export default class Game extends Phaser.Scene {
         ) {
           // player and enemy collided - game over
           console.log("game over");
-          // bod1.gameObject.destroy();
-          // bod2.gameObject.destroy();
           this.props[2]();    // call game over function
         }
       }
@@ -113,7 +108,6 @@ export default class Game extends Phaser.Scene {
       this.fired++;
       this.props[1](this.fired);
 
-      console.log(this.fired);
       this.matter.add
         .sprite(this.Ship.x, this.Ship.y, KEYS.SPRITES.Missle)
         .setName("bullet")
@@ -127,10 +121,24 @@ export default class Game extends Phaser.Scene {
         .setFrictionAir(0)
         .play(KEYS.ANIMATIONS.Missle);
     });
+
+    // Resume game after pause
     this.input.keyboard.on("keyup_ENTER", e => {
       this.scene.launch("Pause", [this.music, this.intro]);
       this.scene.pause("Game");
     });
+
+    // Panic -- pause game, mute sound, display panic modal
+    this.input.keyboard.on("keyup_P", e => {
+      this.scene.launch("Pause", [this.music, this.intro]);
+      this.scene.pause("Game");
+
+      this.music.setMute(true);
+      this.intro.setMute(true);
+      this.props[3]();
+    });
+
+    // Toggle the music
     this.input.keyboard.on("keyup_M", e => {
       if (this.music.config.mute) {
         this.music.setMute(false);

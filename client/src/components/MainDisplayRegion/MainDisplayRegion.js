@@ -3,22 +3,24 @@ import { Route, Switch } from "react-router-dom";
 import { Instructions,
   Scores,
   SpaceGame,
-  Login
+  Login,
+  PanicModal
  } from "../../components";
- import API from "../../utils/API";
-
+import API from "../../utils/API";
 import NoMatch from "../../pages/NoMatch";
-
+import "./MainDisplay.css";
 
 class MainDisplayRegion extends Component {
-  state = {
-    scoreBoard: [],
-    firstName: "Guest",
-    lastName: "",
-    playerId: "",
-    score: 0,
-    fired: 0
-  };
+    state = {
+      scoreBoard: [],
+      firstName: "Guest",
+      lastName: "",
+      playerId: "",
+      panic: "Overlay_vsCode",
+      score: 0,
+      fired: 0,
+      showModal: false,
+    };
 
   componentDidMount() {
     this.getScoreBoard();
@@ -40,22 +42,20 @@ class MainDisplayRegion extends Component {
     this.setState({ fired: fired });
   };
 
-  handleLogin = (data) => {
-    console.log("updating data in App");
-    console.log(data);
-    this.setState({...data, playerId: data._id});
-    console.log('done');
+  handleModalShow = () => {
+    this.setState({ showModal: true });
   }
 
-  // getPlayerInfo = () => {
-  //   return ({
-  //   firstName: this.state.firstName,
-  //   lastName: this.state.lastName,
-  //   playerId: this.state.playerId,
-  //   score: this.state.score,
-  //   fired: this.state.fired
-  // })
-  // }
+  handleModalHide = () => {
+    this.setState({ showModal: false });
+  }
+
+  handleLogin = (data) => {
+    this.setState({...data, playerId: data._id || data.playerId});
+  }
+  handlePanic = (data) => {
+    this.setState({ panic: data });
+  }
 
   getScoreBoard = () => this.state.scoreBoard;
 
@@ -64,7 +64,7 @@ class MainDisplayRegion extends Component {
       <div id="display-region" focus="true" >   
         <Switch>
           <Route exact path="/" component={Instructions} />
-          <Route exact path="/login" render={() => <Login playerLogin={this.handleLogin} /> }/>
+          <Route exact path="/login" render={() => <Login playerLogin={this.handleLogin} handlePanic={this.handlePanic} /> }/>
           <Route
             exact
             path="/spacegame"
@@ -72,6 +72,7 @@ class MainDisplayRegion extends Component {
               <SpaceGame
                 updateGameScore={this.handleScores}
                 updateFired={this.handleBulletsFired}
+                handleModalShow={this.handleModalShow}
               />
             )}
           />
@@ -82,11 +83,16 @@ class MainDisplayRegion extends Component {
               playerScore = {this.state.score}
               playerFname = {this.state.firstName}
               playerLname = {this.state.lastName}
-              // getPlayerInfo={this.getPlayerInfo}
               getScoreBoard={this.getScoreBoard} 
            />} />
           <Route component={NoMatch} />
         </Switch>
+
+        <PanicModal
+          modalOpen={this.state.showModal}
+          hideModal={this.handleModalHide}
+          overlay={this.state.panic}
+        />
       </div>
     );
   }
