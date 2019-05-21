@@ -6,8 +6,9 @@ export default class Enemy extends Phaser.Physics.Matter.Sprite {
         world.scene.sys.add.displayList.add(this);
         this.setIgnoreGravity(true);
         this.setFriction(0, 0);
-        this.setVelocity(0.8);
         this.setAngle(Phaser.Math.Between(-180, 180));
+        this.thrust(0.4);
+        // this.setVelocity(.1)
         this.setScale(.5);
         this.setBounce(1);
         this.hp = 10;

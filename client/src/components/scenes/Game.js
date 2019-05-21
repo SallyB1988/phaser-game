@@ -25,6 +25,8 @@ export default class Game extends Phaser.Scene {
         frames: [0, 1, 2, 3, 4]
       })
     });
+    this.maxEnemies = 1;
+    this.enemiesOnScreen = 0;
   }
 
   create = () => {
@@ -62,13 +64,10 @@ export default class Game extends Phaser.Scene {
           bod1.gameObject.destroy();
           bod2.gameObject.destroy();
           this.props[0](this.Ship.score);
-
-          new Enemy(
-            this.mWorld,
-            Phaser.Math.Between(0, 1600),
-            Phaser.Math.Between(0, 1200),
-            this.getRandomEnemy()
-          );
+          this.enemiesOnScreen--;
+          if(this.Ship.score % 50 === 0){
+            this.maxEnemies++;
+          }
         } else if (
           (body1 === "player" && body2 === "enemy") ||
           (body1 === "enemy" && body2 === "player")
@@ -82,7 +81,7 @@ export default class Game extends Phaser.Scene {
     //Background
     this.add.image(0, 0, KEYS.IMAGES.Stars).setScale(4);
     //Player
-    this.Ship = new Player(this.mWorld, 400, 200, KEYS.SPRITES.GreenShip);
+    this.Ship = new Player(this.mWorld, 0, 0, KEYS.SPRITES.GreenShip);
 
     //Camera
     this.cameras.main.startFollow(this.Ship).setZoom(0.75);
@@ -98,8 +97,6 @@ export default class Game extends Phaser.Scene {
       });
     });
     this.intro.play({ volume: 0.5 });
-    //enemy
-    this.Bad = new Enemy(this.mWorld, Phaser.Math.Between(200, 1400), Phaser.Math.Between(200, 1000), this.getRandomEnemy());
     //Hud
     this.scene.launch("Hud", this.Ship);
     //keyboard
@@ -107,7 +104,6 @@ export default class Game extends Phaser.Scene {
     this.input.keyboard.on("keyup_SPACE", e => {
       this.fired++;
       this.props[1](this.fired);
-
       this.matter.add
         .sprite(this.Ship.x, this.Ship.y, KEYS.SPRITES.Missle)
         .setName("bullet")
@@ -120,6 +116,7 @@ export default class Game extends Phaser.Scene {
         .setCollidesWith([1, 4])
         .setFrictionAir(0)
         .play(KEYS.ANIMATIONS.Missle);
+
     });
 
     // Resume game after pause
@@ -153,9 +150,32 @@ export default class Game extends Phaser.Scene {
   update() {
     //Text
     new KeyControls(this.Ship);
+
+    if(this.enemiesOnScreen < this.maxEnemies){
+
+      this.spawnPoint();
+    }
   }
 
   getRandomEnemy() {
     return enemies[Math.floor(Math.random() * enemies.length)]
   }
+
+  spawnPoint(){
+
+    let x = Phaser.Math.Between(200, 1400)
+    let y = Phaser.Math.Between(200, 1000)
+    
+    console.log("this is x:"+x,"this is y:"+y);
+    console.log(Phaser.Math.Distance.Between(x,y,this.Ship.x,this.Ship.y));
+
+    if(Phaser.Math.Distance.Between(x,y,this.Ship.x,this.Ship.y)<200){
+    this.spawnPoint()
+    }
+    else{
+    new Enemy(this.mWorld, x, y, this.getRandomEnemy());
+    this.enemiesOnScreen++;
+    }
+  }
+
 }
