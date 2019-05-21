@@ -82,7 +82,7 @@ export default class Game extends Phaser.Scene {
     //Background
     this.add.image(0, 0, KEYS.IMAGES.Stars).setScale(4);
     //Player
-    this.Ship = new Player(this.mWorld, 0, 0, KEYS.SPRITES.GreenShip);
+    this.Ship = new Player(this.mWorld, 780, 580, KEYS.SPRITES.GreenShip);
 
     //Camera
     this.cameras.main.startFollow(this.Ship).setZoom(0.75);
@@ -166,8 +166,9 @@ export default class Game extends Phaser.Scene {
 
     let x = Phaser.Math.Between(200, 1400)
     let y = Phaser.Math.Between(200, 1000)
-    
-    if(Phaser.Math.Distance.Between(x,y,this.Ship.x,this.Ship.y)<200){
+    console.log(Phaser.Math.Distance.Between(x,y,this.Ship.x,this.Ship.y));
+
+    if(Phaser.Math.Distance.Between(x,y,this.Ship.x,this.Ship.y)<300){
     this.spawnPoint()
     }
     else{
