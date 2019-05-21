@@ -165,11 +165,9 @@ export default class Game extends Phaser.Scene {
 
     let x = Phaser.Math.Between(200, 1400)
     let y = Phaser.Math.Between(200, 1000)
-    
-    console.log("this is x:"+x,"this is y:"+y);
     console.log(Phaser.Math.Distance.Between(x,y,this.Ship.x,this.Ship.y));
 
-    if(Phaser.Math.Distance.Between(x,y,this.Ship.x,this.Ship.y)<200){
+    if(Phaser.Math.Distance.Between(x,y,this.Ship.x,this.Ship.y)<300){
     this.spawnPoint()
     }
     else{
