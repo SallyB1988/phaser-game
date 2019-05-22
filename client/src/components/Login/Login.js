@@ -140,6 +140,7 @@ class Login extends Component {
           onChange = {this.props.setTheme}>
           <ToggleButton className="panic-option" value="Ducks">Space Ducks</ToggleButton>
           <ToggleButton className="panic-option" value="Food">Food Fight</ToggleButton>
+          <ToggleButton className="panic-option" value="CageMatch">Cage Match</ToggleButton>
         </ToggleButtonGroup>
       </ButtonToolbar>
       <h3>Select a Panic Screen</h3>

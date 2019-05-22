@@ -80,9 +80,9 @@ export default class Game extends Phaser.Scene {
       }
     });
     //Background
-    this.add.image(0, 0, this.KEYS.IMAGES.Stars).setScale(4);
+    this.add.image(0, 0, this.KEYS.IMAGES.Background).setScale(4);
     //Player
-    this.Ship = new Player(this.mWorld, 780, 580, this.KEYS.SPRITES.GreenShip);
+    this.Ship = new Player(this.mWorld, 780, 580, this.KEYS.SPRITES.Player);
 
     //Camera
     this.cameras.main.startFollow(this.Ship).setZoom(0.75);

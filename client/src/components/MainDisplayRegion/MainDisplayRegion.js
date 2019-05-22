@@ -7,8 +7,9 @@ import { Instructions,
   PanicModal
  } from "../../components";
  import { KEYS, enemies } from "../../utils/KEYS"
-import { KEYS_Food, enemies_Food } from "../../utils/KEYS_Food"
-import { LoadScene, FoodFightScene } from "../scenes/";
+import { KEYS_Food, enemies_Food } from "../../utils/KEYS_Food";
+import { KEYS_Cage, enemies_Cage } from "../../utils/KEYS_Cage";
+import { LoadScene, FoodFightScene, CageMatchScene } from "../scenes/";
 
 import API from "../../utils/API";
 import NoMatch from "../../pages/NoMatch";
@@ -84,7 +85,13 @@ class MainDisplayRegion extends Component {
         enemies: enemies_Food,
         themeScene: FoodFightScene
       }
+    } else if (data === "CageMatch") {
+    themeData = {
+      KEYS: KEYS_Cage,
+      enemies: enemies_Cage,
+      themeScene: CageMatchScene
     }
+  }
     this.setState({ themeData: themeData });
   }
 
