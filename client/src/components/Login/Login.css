@@ -1,0 +1,20 @@
+.panic-option {
+  background-color: #21c2b3;
+  outline-color: none;
+  border: none;
+  margin-right: 3px;
+  padding-top: 2px;
+  border-radius: 5px !important;
+  box-shadow: none !important;
+}
+
+.panic-option:not(:disabled):not(.disabled).active,
+.panic-option:hover,
+.panic-button:active {
+  background-color: #198d81 !important;
+  box-shadow: none !important;
+}
+
+#submit-button {
+  background-color: #198d81 !important;
+}

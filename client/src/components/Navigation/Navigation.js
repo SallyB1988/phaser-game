@@ -3,26 +3,18 @@ import React from "react";
 
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { IndexLinkContainer } from "react-router-bootstrap";
-
-const styles = {
-  navButton: {
-    backgroundColor: "#12A9A9",
-    border: "none",
-    margin: 2
-
-  }
-};
+import "./Navigation.css";
 
 function Navigation(props) {
   const { routes } = props;
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Nav className="mr-auto">
+    <Navbar bg="transparent" expand="lg" className="pt-1 m-0">
+      <Nav>
         {routes.map(r => {
           return (
-            <IndexLinkContainer key={r.path} to={r.path}>
-              <Button style={styles.navButton}>{r.name}</Button>
+            <IndexLinkContainer className="nav-style" key={r.path} to={r.path}>
+              <Button className="button-style">{r.name}</Button>
             </IndexLinkContainer>
           );
         })}

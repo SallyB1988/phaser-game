@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Row, Col, Container, ButtonToolbar, ToggleButtonGroup, ToggleButton } from "react-bootstrap";
 import { Input, FormBtn } from "../Form";
+import "./Login.css";
 
 const styles = {
   welcome: {
-    backgroundColor: "lightgrey",
-    marginTop: 80
+    backgroundColor: "#21C2B3",
+    marginTop: 40
   },
   welcomeText: {
     paddingTop: 20,
@@ -21,7 +22,8 @@ class Login extends Component {
     firstName: "",
     lastName: "",
     highScore: 0,
-    greeting: ""
+    greeting: "",
+    showForm: true
   };
 
   componentDidMount() {
@@ -99,6 +101,8 @@ class Login extends Component {
       })
       alert("Enter a first name and last name - otherwise you are a guest and your score will not be saved.");
     }
+
+    this.setState({showForm: false})
   };
 
   welcome = () => {
@@ -111,48 +115,52 @@ class Login extends Component {
     )
   }
 
+  inputForm = () => {
+    return(
+      <form>
+        <Input
+          value={this.state.firstName}
+          onChange={this.handleInputChange}
+          name="firstName"
+          placeholder="First Name (required)"
+        />
+        <Input
+          value={this.state.lastName}
+          onChange={this.handleInputChange}
+          name="lastName"
+          placeholder="Last Name (required)"
+        />
+        <h3>Select a Panic Screen</h3>
+        <p>(for when the boss is coming!)</p>
+      <ButtonToolbar>
+        <ToggleButtonGroup
+          type="radio"
+          name="overlay"
+          defaultValue="Overlay_vsCode"
+          onChange = {this.props.handlePanic}>
+          <ToggleButton className="panic-option" value="Overlay_vsCode">VSCode</ToggleButton>
+          <ToggleButton className="panic-option" value="Overlay_stackoverflow">JavaScript</ToggleButton>
+          <ToggleButton className="panic-option" value="Overlay_oracle">Java</ToggleButton>
+          <ToggleButton className="panic-option" value="Overlay_c++">C++</ToggleButton>
+        </ToggleButtonGroup>
+      </ButtonToolbar>
+        <FormBtn
+          id="submit-button"
+          disabled={!(this.state.firstName && this.state.lastName)}
+          onClick={this.handleFormSubmit}
+        >
+          Submit
+        </FormBtn>
+      </form>
+    )
+  }
+
   render() {
     return (
       <Container fluid>
         <Row>
           <Col md={{span: 6, offset: 3}} className="my-3">
-            <form>
-              <Input
-                value={this.state.firstName}
-                onChange={this.handleInputChange}
-                name="firstName"
-                placeholder="First Name (required)"
-              />
-              <Input
-                value={this.state.lastName}
-                onChange={this.handleInputChange}
-                name="lastName"
-                placeholder="Last Name (required)"
-              />
-              <h3>Select a Panic Screen</h3>
-              <p>(for when the boss is coming!)</p>
-            <ButtonToolbar>
-              <ToggleButtonGroup
-                type="radio"
-                name="overlay"
-                defaultValue="Overlay_vsCode"
-                onChange = {this.props.handlePanic}>
-                <ToggleButton className="mx-1" value="Overlay_vsCode">VSCode</ToggleButton>
-                <ToggleButton className="mx-1" value="Overlay_stackoverflow">JavaScript</ToggleButton>
-                <ToggleButton className="mx-1" value="Overlay_oracle">Java</ToggleButton>
-                <ToggleButton className="mx-1" value="Overlay_c++">C++</ToggleButton>
-              </ToggleButtonGroup>
-            </ButtonToolbar>
-              <FormBtn
-                disabled={!(this.state.firstName && this.state.lastName)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit
-              </FormBtn>
-            </form>
-
-            { this.state.greeting ? this.welcome() : null }
-
+            {this.state.showForm ? this.inputForm() : this.welcome()}
           </Col>
         </Row>
 
