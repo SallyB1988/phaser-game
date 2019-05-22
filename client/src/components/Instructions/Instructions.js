@@ -28,7 +28,8 @@ function Instructions() {
         <ul>
           <li>Left/Right Keys: Rotates the spaceship</li>
           <li>Up/Down Keys: Moves ship forward/backward</li>
-          <li>Space Bar: shoots missiles</li>
+          <li>Space Bar: Shoots missiles</li>
+          <li>Enter: Pauses game</li>
           <li>M: Toggles sounds</li>
           <li />
           P: Displays Panic screen image. Hit escape to return to game.

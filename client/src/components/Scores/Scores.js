@@ -61,23 +61,31 @@ class Scores extends Component {
     return (
       <>
         <Row className="d-flex justify-content-center" id="player-score" >
-          <Col md={6} className="text-right px-3" id="final-score">{playerFname} {playerLname}</Col>
-          <Col md={6} float-left> Score: {playerScore}</Col>
+          <Col md={6} className="text-right px-3" id="final-score">
+            <h3>{playerFname} {playerLname}</h3>
+          </Col>
+          <Col md={6} float-left>
+          <h3>Score: {playerScore}</h3>
+          </Col>
         </Row>
         <Row className="d-flex justify-content-center my-3" >
           <h2>PLAYER RANKING</h2>
         </Row>
         <div id="ranking">
-          {this.state.highScores.map(u => {
+          {this.state.highScores.map((u, index) => {
+            console.log(index);
             return (
-              <Row key={`${u.firstName}-${u.lastName}`} className="justify-content-center">
-                <Col md={6}>
-                  <h3>
+              <Row key={` ${u.firstName}-${u.lastName}`} className="justify-content-center">
+                <Col md={1}>
+                  <h5>{index+1}</h5>
+                </Col>
+                <Col md={5}>
+                  <h5>
                     {u.firstName} {u.lastName}
-                  </h3>
+                  </h5>
                 </Col>
                 <Col md={2}>
-                  <h2>{u.highScore}</h2>
+                  <h5>{u.highScore}</h5>
                 </Col>
               </Row>
             );
