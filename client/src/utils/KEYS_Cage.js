@@ -1,4 +1,4 @@
-const KEYS_Food = {
+const KEYS_Cage = {
     SCENES:{
         Load: "Load",
         Menu: "Menu",
@@ -23,5 +23,5 @@ const KEYS_Food = {
     }
 }
 
-// const enemies_Food = [KEYS_Food.SPRITES.Taco, KEYS_Food.SPRITES.Burger, KEYS_Food.SPRITES.HotDog];
-export  { KEYS_Cage}
+const enemies_Cage = [KEYS_Cage.SPRITES.Enemy];
+export  { KEYS_Cage, enemies_Cage }
