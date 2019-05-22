@@ -1,14 +1,16 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-import { Game, LoadScene, Menu, Pause, Hud } from "../scenes/";
+import { Game, Menu, Pause, Hud } from "../scenes/";
 import Phaser from "phaser";
+
 class SpaceGame extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       closeFromGame: false,
+      themeData: this.props.themeData,
     }
 
     this.config = {
@@ -26,8 +28,16 @@ class SpaceGame extends React.Component {
         height: 600
       },
       scene: [
-        LoadScene,
-        new Game([this.props.updateGameScore, this.props.updateFired, this.endGame, this.closeFromGame, this.props.handleModalShow]),
+        // LoadScene,
+        // FoodFightScene,
+        this.props.themeData.themeScene,
+        new Game([this.props.updateGameScore,
+           this.props.updateFired,
+            this.endGame,
+             this.closeFromGame,
+              this.props.handleModalShow,
+              this.state.themeData
+            ]),
         Menu,
         Pause,
         Hud

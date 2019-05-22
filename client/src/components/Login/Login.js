@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Row, Col, Container, ButtonToolbar, ToggleButtonGroup, ToggleButton } from "react-bootstrap";
 import { Input, FormBtn } from "../Form";
+
 import "./Login.css";
 
 const styles = {
@@ -130,7 +131,18 @@ class Login extends Component {
           name="lastName"
           placeholder="Last Name (required)"
         />
-        <h3>Select a Panic Screen</h3>
+        <h3>Select a Theme</h3>
+      <ButtonToolbar>
+        <ToggleButtonGroup
+          type="radio"
+          name="theme"
+          defaultValue="Ducks"
+          onChange = {this.props.setTheme}>
+          <ToggleButton className="panic-option" value="Ducks">Space Ducks</ToggleButton>
+          <ToggleButton className="panic-option" value="Food">Food Fight</ToggleButton>
+        </ToggleButtonGroup>
+      </ButtonToolbar>
+      <h3>Select a Panic Screen</h3>
         <p>(for when the boss is coming!)</p>
       <ButtonToolbar>
         <ToggleButtonGroup
