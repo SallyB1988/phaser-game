@@ -1,5 +1,5 @@
 import Phaser, { Sound } from "phaser";
-import { KEYS, enemies } from "../../utils/KEYS";
+// import { KEYS, enemies } from "../../utils/KEYS_Food";
 import { Player, Enemy } from "../gameobjects/Characters";
 import KeyboardV2 from "../gameobjects/KeyboardV2";
 import KeyControls from "../gameobjects/KeyboardControls";
@@ -12,14 +12,16 @@ export default class Game extends Phaser.Scene {
 
   init() {
     this.fired = 0;
+    this.KEYS = this.props[5].KEYS;
+    this.enemies = this.props[5].enemies;
   }
 
   preload() {
     this.anims.create({
-      key: KEYS.ANIMATIONS.Missle,
+      key: this.KEYS.ANIMATIONS.Missle,
       frameRate: 4,
       repeat: 0,
-      frames: this.anims.generateFrameNumbers(KEYS.SPRITES.Missle, {
+      frames: this.anims.generateFrameNumbers(this.KEYS.SPRITES.Missle, {
         frames: [0, 1, 2, 3, 4]
       })
     });
@@ -78,18 +80,18 @@ export default class Game extends Phaser.Scene {
       }
     });
     //Background
-    this.add.image(0, 0, KEYS.IMAGES.Stars).setScale(4);
+    this.add.image(0, 0, this.KEYS.IMAGES.Stars).setScale(4);
     //Player
-    this.Ship = new Player(this.mWorld, 780, 580, KEYS.SPRITES.GreenShip);
+    this.Ship = new Player(this.mWorld, 780, 580, this.KEYS.SPRITES.GreenShip);
 
     //Camera
     this.cameras.main.startFollow(this.Ship).setZoom(0.75);
     //audio
     this.sound.pauseOnBlur = false;
     this.sound.loopEndOffset = 2;
-    this.intro = this.sound.add(KEYS.AUDIO.Intro);
-    this.music = this.sound.add(KEYS.AUDIO.Battle);
-    this.bulletSound = this.sound.add(KEYS.AUDIO.Fire);
+    this.intro = this.sound.add(this.KEYS.AUDIO.Intro);
+    this.music = this.sound.add(this.KEYS.AUDIO.Battle);
+    this.bulletSound = this.sound.add(this.KEYS.AUDIO.Fire);
     this.intro.on("complete", () => {
       this.music.play({
         loop: true,
@@ -106,7 +108,7 @@ export default class Game extends Phaser.Scene {
       this.fired++;
       this.props[1](this.fired);
       this.matter.add
-        .sprite(this.Ship.x, this.Ship.y, KEYS.SPRITES.Missle)
+        .sprite(this.Ship.x, this.Ship.y, this.KEYS.SPRITES.Missle)
         .setName("bullet")
         .setSize(50, 50)
         .setDisplaySize(30, 30)
@@ -116,7 +118,7 @@ export default class Game extends Phaser.Scene {
         .setCollisionCategory(8)
         .setCollidesWith([1, 4])
         .setFrictionAir(0)
-        .play(KEYS.ANIMATIONS.Missle);
+        .play(this.KEYS.ANIMATIONS.Missle);
     });
 
     // Resume game after pause
@@ -158,7 +160,7 @@ export default class Game extends Phaser.Scene {
   }
 
   getRandomEnemy() {
-    return enemies[Math.floor(Math.random() * enemies.length)]
+    return this.enemies[Math.floor(Math.random() * this.enemies.length)]
   }
 
   spawnPoint(){

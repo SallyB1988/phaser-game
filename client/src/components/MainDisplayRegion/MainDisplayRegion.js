@@ -6,11 +6,18 @@ import { Instructions,
   Login,
   PanicModal
  } from "../../components";
+ import { KEYS, enemies } from "../../utils/KEYS"
+import { KEYS_Food, enemies_Food } from "../../utils/KEYS_Food"
+import { LoadScene, FoodFightScene } from "../scenes/";
+
 import API from "../../utils/API";
 import NoMatch from "../../pages/NoMatch";
 import "./MainDisplay.css";
 
 class MainDisplayRegion extends Component {
+
+  // themeData defaults to Ducks (which uses KEYS, enemies, and LoadScene)
+  // FoodFight uses KEYS_Food, enemies_Food, and FoodFightScene)
     state = {
       scoreBoard: [],
       firstName: "Guest",
@@ -20,6 +27,11 @@ class MainDisplayRegion extends Component {
       score: 0,
       fired: 0,
       showModal: false,
+      themeData: {
+        KEYS: KEYS,
+        enemies: enemies,
+        themeScene: LoadScene
+      }
     };
 
   componentDidMount() {
@@ -53,8 +65,27 @@ class MainDisplayRegion extends Component {
   handleLogin = (data) => {
     this.setState({...data, playerId: data._id || data.playerId});
   }
+
   handlePanic = (data) => {
     this.setState({ panic: data });
+  }
+
+  setTheme = (data) => {
+    let themeData  = {};
+    if (data === "Ducks") {
+      themeData = {
+        KEYS: KEYS,
+        enemies: enemies,
+        themeScene: LoadScene
+      }
+    } else if (data === "Food") {
+      themeData = {
+        KEYS: KEYS_Food,
+        enemies: enemies_Food,
+        themeScene: FoodFightScene
+      }
+    }
+    this.setState({ themeData: themeData });
   }
 
   getScoreBoard = () => this.state.scoreBoard;
@@ -64,7 +95,12 @@ class MainDisplayRegion extends Component {
       <div id="display-region" focus="true" >   
         <Switch>
           <Route exact path="/" component={Instructions} />
-          <Route exact path="/login" render={() => <Login playerLogin={this.handleLogin} handlePanic={this.handlePanic} /> }/>
+          <Route exact path="/login" render={() => 
+            <Login
+              playerLogin={this.handleLogin}
+              handlePanic={this.handlePanic}
+              setTheme={this.setTheme}
+            /> }/>
           <Route
             exact
             path="/spacegame"
@@ -73,6 +109,7 @@ class MainDisplayRegion extends Component {
                 updateGameScore={this.handleScores}
                 updateFired={this.handleBulletsFired}
                 handleModalShow={this.handleModalShow}
+                themeData={this.state.themeData}
               />
             )}
           />
