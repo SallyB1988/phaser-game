@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import KEYS from "../../utils/KEYS";
+import {KEYS} from "../../utils/KEYS";
 export default class LoadScene extends Phaser.Scene {
   constructor(props) {
     super({ key: "LoadScene" });
@@ -27,6 +27,7 @@ export default class LoadScene extends Phaser.Scene {
     });
     this.load.audio(KEYS.AUDIO.Battle, "/audio/BossMain.wav");
     this.load.audio(KEYS.AUDIO.Intro, "/audio/BossIntro.wav");
+    this.load.audio(KEYS.AUDIO.Fire, "/audio/laser_short.mp3");
 
     this.loadbar = this.add.graphics({
       fillStyle: {

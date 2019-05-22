@@ -26,6 +26,9 @@ const KEYS = {
     AUDIO:{
         Intro: "IntroBattle",
         Battle:"BattleMusic",
+        Fire:  "BulletSound",
     }
 }
-export default KEYS
+
+const enemies = [KEYS.SPRITES.YellowDuck, KEYS.SPRITES.GreenDuck, KEYS.SPRITES.PinkDuck, KEYS.SPRITES.PurpleDuck];
+export  { KEYS, enemies }

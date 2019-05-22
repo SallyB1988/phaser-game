@@ -1,10 +1,8 @@
-import Phaser from "phaser";
-import KEYS from "../../utils/KEYS";
+import Phaser, { Sound } from "phaser";
+import { KEYS, enemies } from "../../utils/KEYS";
 import { Player, Enemy } from "../gameobjects/Characters";
 import KeyboardV2 from "../gameobjects/KeyboardV2";
 import KeyControls from "../gameobjects/KeyboardControls";
-
-const enemies = [KEYS.SPRITES.YellowDuck, KEYS.SPRITES.GreenDuck, KEYS.SPRITES.PinkDuck, KEYS.SPRITES.PurpleDuck];
 
 export default class Game extends Phaser.Scene {
   constructor(props) {
@@ -91,6 +89,7 @@ export default class Game extends Phaser.Scene {
     this.sound.loopEndOffset = 2;
     this.intro = this.sound.add(KEYS.AUDIO.Intro);
     this.music = this.sound.add(KEYS.AUDIO.Battle);
+    this.bulletSound = this.sound.add(KEYS.AUDIO.Fire);
     this.intro.on("complete", () => {
       this.music.play({
         loop: true,
@@ -103,6 +102,7 @@ export default class Game extends Phaser.Scene {
     //keyboard
     new KeyboardV2(this, this.Ship);
     this.input.keyboard.on("keyup_SPACE", e => {
+      this.bulletSound.play();
       this.fired++;
       this.props[1](this.fired);
       this.matter.add
@@ -112,12 +112,11 @@ export default class Game extends Phaser.Scene {
         .setDisplaySize(30, 30)
         .setIgnoreGravity(true)
         .setAngle(this.Ship.angle - 90)
-        .thrust(0.02 + this.Ship.body.speed / 150)
+        .thrust(0.04 + this.Ship.body.speed / 150)
         .setCollisionCategory(8)
         .setCollidesWith([1, 4])
         .setFrictionAir(0)
         .play(KEYS.ANIMATIONS.Missle);
-
     });
 
     // Resume game after pause
