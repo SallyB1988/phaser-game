@@ -6,7 +6,7 @@ import "./App.css";
 const appRoutes = [
   { name: "home", path: "/" },
   { name: "login", path: "/login" },
-  { name: "space game", path: "/spacegame" },
+  { name: "play game", path: "/playgame" },
   { name: "scoreboard", path: "/scores" }
 ];
 

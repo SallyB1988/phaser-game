@@ -18,7 +18,7 @@ class SpaceGame extends React.Component {
       physics: {
         default: "matter",
         matter: {
-          debug: true
+          debug: false,
         }
       },
       scale: {

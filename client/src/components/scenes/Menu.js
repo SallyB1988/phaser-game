@@ -14,7 +14,7 @@ export default class Menu extends Phaser.Scene {
 
     create() {
 
-        this.title = this.add.text(this.game.renderer.width*.30, this.game.renderer.height*.12, 'Space Game');
+        this.title = this.add.text(this.game.renderer.width*.30, this.game.renderer.height*.12, 'Shoot Game');
         this.title.setScale(4);
         this.title.setTint(0xff00ff, 0xffff00, 0x0000ff, 0xff0000);
         
