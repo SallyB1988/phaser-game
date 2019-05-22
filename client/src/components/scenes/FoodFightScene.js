@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import {KEYS_Food as KEYS} from "../../utils/KEYS_Food";
+import { KEYS_Food as KEYS } from "../../utils/KEYS_Food";
 
 export default class FoodFightScene extends Phaser.Scene {
   constructor(props) {
@@ -7,18 +7,14 @@ export default class FoodFightScene extends Phaser.Scene {
     this.props = props;
   }
 
-  init() {}
+  init() { }
 
   preload() {
-    this.load.image(KEYS.IMAGES.Stars, "/images/star_sky.jpg");
+    this.load.image(KEYS.IMAGES.Background, "/images/star_sky.jpg");
     this.load.image(KEYS.SPRITES.Taco, "/images/Taco.png");
     this.load.image(KEYS.SPRITES.Burger, "/images/Burger.png");
     this.load.image(KEYS.SPRITES.HotDog, "/images/HotDog.png");
-    this.load.image(
-      KEYS.SPRITES.GreenShip,
-      "/images/spikedship3smallgreen.png"
-    );
-    // this.load.image(KEYS.SPRITES.RedShip, "/images/spikedship3smallred.png");
+    this.load.image(KEYS.SPRITES.Player,"/images/spikedship3smallgreen.png");
     this.load.spritesheet(KEYS.SPRITES.Missle, "/images/magicbullets.png", {
       frameHeight: 106,
       frameWidth: 128
