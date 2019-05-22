@@ -123,7 +123,7 @@ export default class Game extends Phaser.Scene {
 
     // Resume game after pause
     this.input.keyboard.on("keyup_ENTER", e => {
-      this.scene.launch("Pause", [this.music, this.intro]);
+      this.scene.launch("Pause", [this.music, this.intro, this.bulletSound]);
       this.scene.pause("Game");
     });
 
@@ -142,9 +142,11 @@ export default class Game extends Phaser.Scene {
       if (this.music.config.mute) {
         this.music.setMute(false);
         this.intro.setMute(false);
+        this.bulletSound.setMute(false);
       } else {
         this.music.setMute(true);
         this.intro.setMute(true);
+        this.bulletSound.setMute(true);
       }
     });
   };
