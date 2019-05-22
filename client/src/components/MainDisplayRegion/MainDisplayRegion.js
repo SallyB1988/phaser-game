@@ -110,7 +110,7 @@ class MainDisplayRegion extends Component {
             /> }/>
           <Route
             exact
-            path="/spacegame"
+            path="/playgame"
             render={() => (
               <SpaceGame
                 updateGameScore={this.handleScores}
