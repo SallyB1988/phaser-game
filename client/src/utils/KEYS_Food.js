@@ -6,10 +6,10 @@ const KEYS_Food = {
         Pause: "Pause",
     },
     IMAGES:{
-        Stars:"StarMap",
+        Background:"Background",
     },
     SPRITES:{
-        GreenShip: "GreenShip",
+        Player: "Player",
         Enemy: "Enemy",
         Missle: "MissleProjectile",
         Taco: "Taco",

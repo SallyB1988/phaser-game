@@ -1,4 +1,4 @@
-const KEYS = {
+const KEYS_Food = {
     SCENES:{
         Load: "Load",
         Menu: "Menu",
@@ -10,15 +10,8 @@ const KEYS = {
     },
     SPRITES:{
         Player: "Player",
-        RedShip: "SmallRedShip",
-        BigRedShip: "BigRedShip",
         Enemy: "Enemy",
-        Duck: "MuscleDuck",
         Missle: "MissleProjectile",
-        YellowDuck: "YellowDuck",
-        GreenDuck: "GreenDuck",
-        PinkDuck: "PinkDuck",
-        PurpleDuck: "PurpleDuck",
     },
     ANIMATIONS:{
         Missle:"ShootingAnimation",
@@ -30,5 +23,5 @@ const KEYS = {
     }
 }
 
-const enemies = [KEYS.SPRITES.YellowDuck, KEYS.SPRITES.GreenDuck, KEYS.SPRITES.PinkDuck, KEYS.SPRITES.PurpleDuck];
-export  { KEYS, enemies }
+// const enemies_Food = [KEYS_Food.SPRITES.Taco, KEYS_Food.SPRITES.Burger, KEYS_Food.SPRITES.HotDog];
+export  { KEYS_Cage}
