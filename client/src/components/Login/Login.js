@@ -28,7 +28,7 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    this.loadUsers();   // SALLY -- use this later to check if user is already in system - then save id?
+    this.loadUsers();  
   }
 
   loadUsers = () => {
@@ -131,30 +131,32 @@ class Login extends Component {
           name="lastName"
           placeholder="Last Name (required)"
         />
-        <h3>Select a Theme</h3>
+        <h5 className="my-2 text-center">THEME</h5>
       <ButtonToolbar>
         <ToggleButtonGroup
+          className="d-block mx-auto"
           type="radio"
           name="theme"
           defaultValue="Ducks"
           onChange = {this.props.setTheme}>
-          <ToggleButton className="panic-option" value="Ducks">Space Ducks</ToggleButton>
-          <ToggleButton className="panic-option" value="Food">Food Fight</ToggleButton>
-          <ToggleButton className="panic-option" value="CageMatch">Cage Match</ToggleButton>
+          <ToggleButton className="radio-option" value="Ducks">Space Ducks</ToggleButton>
+          <ToggleButton className="radio-option" value="Food">Food Fight</ToggleButton>
+          <ToggleButton className="radio-option" value="CageMatch">Cage Match</ToggleButton>
         </ToggleButtonGroup>
       </ButtonToolbar>
-      <h3>Select a Panic Screen</h3>
-        <p>(for when the boss is coming!)</p>
-      <ButtonToolbar>
+      <h5 className="mt-4 mb-0 text-center">PANIC SCREEN</h5>
+        <p className='text-center mt-0 pt-0'>(for when the boss is coming!)</p>
+      <ButtonToolbar >
         <ToggleButtonGroup
+          className="d-block mx-auto"
           type="radio"
           name="overlay"
           defaultValue="Overlay_vsCode"
           onChange = {this.props.handlePanic}>
-          <ToggleButton className="panic-option" value="Overlay_vsCode">VSCode</ToggleButton>
-          <ToggleButton className="panic-option" value="Overlay_stackoverflow">JavaScript</ToggleButton>
-          <ToggleButton className="panic-option" value="Overlay_oracle">Java</ToggleButton>
-          <ToggleButton className="panic-option" value="Overlay_c++">C++</ToggleButton>
+          <ToggleButton className="radio-option" value="Overlay_vsCode">VSCode</ToggleButton>
+          <ToggleButton className="radio-option" value="Overlay_stackoverflow">JavaScript</ToggleButton>
+          <ToggleButton className="radio-option" value="Overlay_oracle">Java</ToggleButton>
+          <ToggleButton className="radio-option" value="Overlay_c++">C++</ToggleButton>
         </ToggleButtonGroup>
       </ButtonToolbar>
         <FormBtn
@@ -172,7 +174,7 @@ class Login extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col md={{span: 6, offset: 3}} className="my-3">
+          <Col md={{span: 8, offset: 2}} className="my-3">
             {this.state.showForm ? this.inputForm() : this.welcome()}
           </Col>
         </Row>

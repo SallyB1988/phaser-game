@@ -4,13 +4,13 @@
   overflow-y: scroll;
   width: 80%;
   margin: auto;
-  background-color: lightgray;
+  background-color: rgba(33, 194, 178, 0.315);
 }
 
 #player-score {
-  background-color: lightgray;
-  padding-top: .5em;
-  padding-bottom: .5em;
+  background-color: rgba(33, 194, 178, 0.315);
+  padding-top: .6em;
+  padding-bottom: .6em;
   width: 80%;
   margin: auto;
 }

@@ -5,17 +5,6 @@ import { Row, Col } from "react-bootstrap";
 import API from "../../utils/API";
 import './Scores.css';
 
-const styles = {
-  finalScore: {
-    fontSize: "42px",
-    paddingTop: 30,
-    paddingBottom: 30,
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
-  }
-};
-
 class Scores extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +40,6 @@ class Scores extends Component {
         
   }
   
-  
   render() {
     const {
           playerScore,
@@ -64,16 +52,15 @@ class Scores extends Component {
           <Col md={6} className="text-right px-3" id="final-score">
             <h3>{playerFname} {playerLname}</h3>
           </Col>
-          <Col md={6} float-left>
+          <Col md={6}>
           <h3>Score: {playerScore}</h3>
           </Col>
         </Row>
-        <Row className="d-flex justify-content-center my-3" >
-          <h2>PLAYER RANKING</h2>
+        <Row className="d-flex justify-content-center mt-3" >
+          <h4>PLAYER RANKING</h4>
         </Row>
         <div id="ranking">
           {this.state.highScores.map((u, index) => {
-            console.log(index);
             return (
               <Row key={` ${u.firstName}-${u.lastName}`} className="justify-content-center">
                 <Col md={1}>

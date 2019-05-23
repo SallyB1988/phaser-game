@@ -1,4 +1,4 @@
-.panic-option {
+.radio-option {
   background-color: #21c2b3;
   outline-color: none;
   border: none;
@@ -8,13 +8,16 @@
   box-shadow: none !important;
 }
 
-.panic-option:not(:disabled):not(.disabled).active,
-.panic-option:hover,
-.panic-button:active {
+.radio-option:not(:disabled):not(.disabled).active,
+.radio-option:hover,
+.radio-button:active {
   background-color: #198d81 !important;
   box-shadow: none !important;
 }
 
 #submit-button {
+  margin-top: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   background-color: #198d81 !important;
 }

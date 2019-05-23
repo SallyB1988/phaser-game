@@ -15,6 +15,7 @@ const KEYS_Food = {
         Taco: "Taco",
         Burger: "Burger",
         HotDog: "HotDog",
+        Donut: "Donut",
     },
     ANIMATIONS:{
         Missle:"ShootingAnimation",
@@ -26,5 +27,5 @@ const KEYS_Food = {
     }
 }
 
-const enemies_Food = [KEYS_Food.SPRITES.Taco, KEYS_Food.SPRITES.Burger, KEYS_Food.SPRITES.HotDog];
+const enemies_Food = [KEYS_Food.SPRITES.Taco, KEYS_Food.SPRITES.Burger, KEYS_Food.SPRITES.HotDog, KEYS_Food.SPRITES.Donut];
 export  { KEYS_Food, enemies_Food }
