@@ -20,8 +20,7 @@
 |   Space Bar            | Shoots missiles                    |
 |   Enter                | Pauses game (hit Enter to resume)  |
 |   M                    | Toggles sounds                     |
-|   P                    | Displays Panic screen image.       |
-|                        | Hit escape to return to game.      |
+|   P                    | Displays Panic screen image. Hit escape to return to game.      |
 
 
 ## Technologies Used
