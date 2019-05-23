@@ -80,12 +80,12 @@ export default class Game extends Phaser.Scene {
       }
     });
     //Background
-    this.add.image(0, 0, this.KEYS.IMAGES.Background).setScale(4);
+    this.add.image(800, 600, this.KEYS.IMAGES.Background).setScale(3);
     //Player
     this.Ship = new Player(this.mWorld, 780, 580, this.KEYS.SPRITES.Player);
 
     //Camera
-    this.cameras.main.startFollow(this.Ship).setZoom(0.75);
+    this.cameras.main.startFollow(this.Ship).setZoom(0.55);
     //audio
     this.sound.pauseOnBlur = false;
     this.sound.loopEndOffset = 2;

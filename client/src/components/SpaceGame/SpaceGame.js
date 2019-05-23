@@ -28,8 +28,6 @@ class SpaceGame extends React.Component {
         height: 600
       },
       scene: [
-        // LoadScene,
-        // FoodFightScene,
         this.props.themeData.themeScene,
         new Game([this.props.updateGameScore,
            this.props.updateFired,

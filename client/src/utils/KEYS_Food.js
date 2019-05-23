@@ -27,5 +27,10 @@ const KEYS_Food = {
     }
 }
 
-const enemies_Food = [KEYS_Food.SPRITES.Taco, KEYS_Food.SPRITES.Burger, KEYS_Food.SPRITES.HotDog, KEYS_Food.SPRITES.Donut];
+const enemies_Food = [
+  KEYS_Food.SPRITES.Taco,
+  KEYS_Food.SPRITES.Burger,
+  KEYS_Food.SPRITES.HotDog,
+  KEYS_Food.SPRITES.Donut
+];
 export  { KEYS_Food, enemies_Food }

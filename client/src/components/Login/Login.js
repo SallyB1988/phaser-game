@@ -29,6 +29,7 @@ class Login extends Component {
 
   componentDidMount() {
     this.loadUsers();  
+    this.props.setTheme("Ducks"); // reset theme to Space Ducks
   }
 
   loadUsers = () => {
@@ -172,14 +173,11 @@ class Login extends Component {
 
   render() {
     return (
-      <Container fluid>
         <Row>
           <Col md={{span: 8, offset: 2}} className="my-3">
             {this.state.showForm ? this.inputForm() : this.welcome()}
           </Col>
         </Row>
-
-      </Container>
     );
   }
 }
