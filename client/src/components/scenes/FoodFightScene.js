@@ -11,9 +11,9 @@ export default class FoodFightScene extends Phaser.Scene {
 
   preload() {
     this.load.image(KEYS.IMAGES.Background, "/images/kitchenbkg.png");
-    this.load.image(KEYS.SPRITES.Taco, "/images/Taco.png");
-    this.load.image(KEYS.SPRITES.Burger, "/images/Burger.png");
-    this.load.image(KEYS.SPRITES.HotDog, "/images/HotDog.png");
+    this.load.image(KEYS.SPRITES.Taco, "/images/taco.png");
+    this.load.image(KEYS.SPRITES.Burger, "/images/burger.png");
+    this.load.image(KEYS.SPRITES.HotDog, "/images/hotdog.png");
     this.load.image(KEYS.SPRITES.Donut, "/images/donut.png");
     this.load.image(KEYS.SPRITES.Player,"/images/chefboy1.png");
     this.load.spritesheet(KEYS.SPRITES.Missle, "/images/magicbullets.png", {
