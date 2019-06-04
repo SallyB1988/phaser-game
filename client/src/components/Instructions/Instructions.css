@@ -1,6 +1,6 @@
 #intro {
   /* font-weight: bold; */
-  font-size: 20px;
+  font-size: 22px;
   padding: 10px;
   margin-top: 15px;
   text-align: center;
@@ -9,4 +9,8 @@
 #instruction-text {
   font-size: 18px;
   padding: 10px;
+}
+
+.text-right, .text-left {
+  font-size: 18px;
 }

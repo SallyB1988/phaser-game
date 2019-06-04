@@ -13,7 +13,7 @@ function Instructions() {
           arcade style game.
         </p>
 
-        <h3 className="text-center">Instructions</h3>
+        <h3 className="text-center">INSTRUCTIONS</h3>
         <p id="instruction-text" className="mx-5">
           Enter your name on the Login page, select a theme
           and a panic screen type.  Your high
@@ -25,7 +25,7 @@ function Instructions() {
         <Row>
         <Col md={12}>
           
-          <h3 className="text-center py-2">Controls</h3>
+          <h3 className="text-center py-2">CONTROLS</h3>
           </Col>
         <Col md={5} className="font-weight-bold text-right">
             Left/Right Arrows:
