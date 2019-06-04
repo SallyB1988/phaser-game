@@ -4,10 +4,10 @@ import { Navigation, MainDisplayRegion } from "./components";
 import "./App.css";
 
 const appRoutes = [
-  { name: "home", path: "/" },
-  { name: "login", path: "/login" },
-  { name: "play game", path: "/playgame" },
-  { name: "scoreboard", path: "/scores" }
+  { name: "Home", path: "/" },
+  { name: "Login", path: "/login" },
+  { name: "Arcade Game", path: "/playgame" },
+  { name: "Scoreboard", path: "/scores" }
 ];
 
 class App extends Component {

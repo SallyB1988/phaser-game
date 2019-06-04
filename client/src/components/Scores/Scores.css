@@ -1,6 +1,6 @@
 #ranking {
   height: 300px;
-  padding: 1em 1em;
+  padding: 1.2em 1em;
   overflow-y: scroll;
   width: 80%;
   margin: auto;
@@ -9,8 +9,8 @@
 
 #player-score {
   background-color: rgba(33, 194, 178, 0.315);
-  padding-top: .6em;
-  padding-bottom: .6em;
+  padding-top: 1.1em;
+  padding-bottom: 1em;
   width: 80%;
   margin: auto;
 }

@@ -1,18 +1,20 @@
 import React, { Component } from "react";
+import { IndexLinkContainer } from "react-router-bootstrap";
 import API from "../../utils/API";
-import { Row, Col, Container, ButtonToolbar, ToggleButtonGroup, ToggleButton } from "react-bootstrap";
+import { Row, Col, Button, ButtonToolbar, ToggleButtonGroup, ToggleButton } from "react-bootstrap";
 import { Input, FormBtn } from "../Form";
+
 
 import "./Login.css";
 
 const styles = {
   welcome: {
     backgroundColor: "#21C2B3",
-    marginTop: 40
+    // marginTop: 40
   },
   welcomeText: {
     paddingTop: 20,
-    paddingBottom: 20,
+    // paddingBottom: 20,
     textTransform: "uppercase"
   }
 };
@@ -113,6 +115,11 @@ class Login extends Component {
         <h2 className="text-center" style={styles.welcomeText}>
           {this.state.greeting}
         </h2>
+        <div id="playgame-button">
+          <IndexLinkContainer to="/playgame">
+            <Button id="button-style">Start Arcade Game</Button>
+          </IndexLinkContainer>
+        </div>
       </div>
     )
   }

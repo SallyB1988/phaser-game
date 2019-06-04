@@ -56,8 +56,8 @@ class Scores extends Component {
           <h3>Score: {playerScore}</h3>
           </Col>
         </Row>
-        <Row className="d-flex justify-content-center mt-3" >
-          <h4>PLAYER RANKING</h4>
+        <Row className="d-flex justify-content-center mt-5 mb-1" >
+          <h3>PLAYER RANKING</h3>
         </Row>
         <div id="ranking">
           {this.state.highScores.map((u, index) => {

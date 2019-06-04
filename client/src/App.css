@@ -3,7 +3,8 @@
 }
 
 #main-container {
-  width: 60%;
+  width: 80%;
+  min-width: 800px;
   background-color: #efefef;
   margin-bottom: 0;
 }

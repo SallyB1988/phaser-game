@@ -21,3 +21,24 @@
   padding-bottom: 3px;
   background-color: #198d81 !important;
 }
+
+/* #arcade-start {
+  margin-bottom: 20px !important;
+  background-color: #198d81 !important;
+} */
+
+#button-style {
+  color: black;
+  background-color: #198d81;
+  outline-color: none;
+  border: none;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  box-shadow: none !important;
+}
+#playgame-button {
+  display: flex;
+  justify-content: center;
+}
